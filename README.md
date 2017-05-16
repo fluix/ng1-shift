@@ -10,7 +10,9 @@ It also passes property `template` as a static component value.
 
 Lifetime hooks:
 **ngOnInit** - links to $onInit
+
 **ngOnChanges** - links to $onChanges
+
 **ngOnDestroy** - links to $onDestroy
 
 ### Input
