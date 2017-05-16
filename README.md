@@ -2,18 +2,18 @@
 
 Library allows you to write with Angular 2 syntax on Angular 1.5+. That will make your migration to Angular 2(or 4) more easier.
 
-### API
+## API
 
-## Component
+### Component
 Decorator for class, which links class to component contoller.
 It also passes property `template` as a static component value.
 
-#Lifetime hooks:
-*ngOnInit* - links to $onInit
-*ngOnChanges* - links to $onChanges
-*ngOnDestroy* - links to $onDestroy
+Lifetime hooks:
+**ngOnInit** - links to $onInit
+**ngOnChanges** - links to $onChanges
+**ngOnDestroy** - links to $onDestroy
 
-##Input
+### Input
 Property decorator for bindings. Literary puts binding property name into static object `bindings` as one-way binding "<".
 
 ```typescript
@@ -32,9 +32,9 @@ class DogComponent {
 }
 ```
 
-##Inject
-Parameter decorator for injection. Works a bit differ from *@Inject* in Angular 2.
-Just pushes specified injection into static property *$inject*.
+### Inject
+Parameter decorator for injection. Works a bit differ from **@Inject** in Angular 2.
+Just pushes specified injection into static property **$inject**.
 
 ```typescript
 class UserComponent {
