@@ -1,0 +1,27 @@
+{
+  "name": "ng1-shift",
+  "version": "0.0.1",
+  "description": "Angular 1.5+ decorators for writing Angular2 like.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/readdle/ng1-shift.git"
+  },
+  "keywords": [
+    "angular",
+    "angularJS",
+    "ng",
+    "ng1",
+    "components",
+    "migrate"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/readdle/ng1-shift/issues"
+  },
+  "homepage": "https://github.com/readdle/ng1-shift#readme"
+}
