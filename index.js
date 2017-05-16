@@ -56,11 +56,11 @@
             }
 
             if (target.ngOnChanges) {
-                target.$onInit = target.ngOnChanges;
+                target.$onChanges = target.ngOnChanges;
             }
 
             if (target.ngOnDestroy) {
-                target.$onInit = target.ngOnDestroy;
+                target.$onDestroy = target.ngOnDestroy;
             }
 
             // Controller linking
