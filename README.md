@@ -9,6 +9,7 @@ Decorator for class, which links class to component contoller.
 It also passes property `template` as a static component value.
 
 Lifetime hooks:
+
 **ngOnInit** - links to $onInit
 
 **ngOnChanges** - links to $onChanges
