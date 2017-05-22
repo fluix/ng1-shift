@@ -18,7 +18,7 @@
                 target.constructor.bindings = {};
             }
 
-            target.constructor.bindings[alias || property] = "<";
+            target.constructor.bindings[property] = "<" + (alias ? alias : "");
         };
     }
 
