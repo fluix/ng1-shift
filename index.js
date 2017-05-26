@@ -23,6 +23,21 @@
     }
 
     /**
+     * @arg alias: string
+     *
+     * @return PropertyDecorator
+     */
+    function Output(alias) {
+        return function (target, property) {
+            if (!target.constructor.bindings) {
+                target.constructor.bindings = {};
+            }
+
+            target.constructor.bindings[property] = "&" + (alias ? alias : "");
+        };
+    }
+
+    /**
      * @arg dependencyName: string
      *
      * @return ParameterDecorator
