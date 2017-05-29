@@ -73,6 +73,26 @@ class DogComponent {
 }
 ```
 
+
+## Output
+Property decorator for callback bindings. Literary puts binding property name into static object `bindings` as callback binding "&".
+
+```typescript
+class CatComponent {
+    @Output("onAliasCallback") onCallback: Function;
+}
+```
+Equals to:
+```typescript
+class CatComponent {
+    static bindings = {
+        onCallback: "&onAliasCallback"
+    };
+
+    onCallback: Function;
+}
+```
+
 ## Inject
 Parameter decorator for injection. Works a bit differ from **@Inject** in Angular 2.
 Just pushes specified injection into static property **$inject**.
