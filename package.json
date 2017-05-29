@@ -4,7 +4,7 @@
   "description": "Angular 1.5+ decorators for writing Angular2 like.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,21 @@
   "bugs": {
     "url": "https://github.com/readdle/ng1-shift/issues"
   },
-  "homepage": "https://github.com/readdle/ng1-shift#readme"
+  "homepage": "https://github.com/readdle/ng1-shift#readme",
+  "jest": {
+    "transform": {
+      ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(\\.(test|spec))\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ]
+  },
+  "devDependencies": {
+    "jest": "20.0.4",
+    "ts-jest": "20.0.1",
+    "typescript": "2.3.2",
+    "tslib": "1.7.1"
+  }
 }
