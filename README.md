@@ -2,6 +2,9 @@
 
 Library allows you to write with Angular 2 syntax on Angular 1.5+. That will make your migration to Angular 2(or 4) more easier.
 
+## How to install?
+`npm i -S ng1-shift`
+
 ## Component
 Decorator for class, which links class to component contoller.
 It also passes property `template` as a static component value.
@@ -16,7 +19,9 @@ import {Component, Inject, Input} from "ng1-shift";
 import {UserDeleteErrorEntity} from "../store/entity/user-delete-error";
 
 @Component({
-    template: require("./playground.html"),
+    template: `
+        <h1>Place your template here</h1>
+    `,
 })
 export class PlaygroundComponent implements ng.IController {
     ngOnInit() {
@@ -33,7 +38,9 @@ Equals to:
 ```typescript
 export class PlaygroundComponent implements ng.IController {
     static controller = PlaygroundComponent;
-    static template = require("./playground.html");
+    static template = `
+        <h1>Place your template here</h1>
+    `;
 
     $onInit() {
     }
@@ -63,6 +70,26 @@ class DogComponent {
     };
 
     name: string;
+}
+```
+
+
+## Output
+Property decorator for callback bindings. Literary puts binding property name into static object `bindings` as callback binding "&".
+
+```typescript
+class CatComponent {
+    @Output("onAliasCallback") onCallback: Function;
+}
+```
+Equals to:
+```typescript
+class CatComponent {
+    static bindings = {
+        onCallback: "&onAliasCallback"
+    };
+
+    onCallback: Function;
 }
 ```
 
