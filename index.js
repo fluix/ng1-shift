@@ -61,21 +61,23 @@
      */
     function Component(config) {
         return function (target) {
-            if (config.template) {
-                target.template = config.template;
+            if (config) {
+                if (config.template) {
+                    target.template = config.template;
+                }
             }
 
             // Lifehooks aliases
-            if (target.ngOnInit) {
-                target.$onInit = target.ngOnInit;
+            if (target.prototype.ngOnInit) {
+                target.prototype.$onInit = target.prototype.ngOnInit;
             }
 
-            if (target.ngOnChanges) {
-                target.$onChanges = target.ngOnChanges;
+            if (target.prototype.ngOnChanges) {
+                target.prototype.$onChanges = target.prototype.ngOnChanges;
             }
 
-            if (target.ngOnDestroy) {
-                target.$onDestroy = target.ngOnDestroy;
+            if (target.prototype.ngOnDestroy) {
+                target.prototype.$onDestroy = target.prototype.ngOnDestroy;
             }
 
             // Controller linking
