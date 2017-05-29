@@ -88,6 +88,7 @@
     return {
         Input: Input,
         Inject: Inject,
+        Output: Output,
         Component: Component
     };
 }));
