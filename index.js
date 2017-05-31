@@ -7,6 +7,32 @@
         window.returnExports = factory();
     }
 }(this, function () {
+    const toCamelCase = require("./helpers/to-camel-case");
+
+    /**
+     * @arg config: {
+                id: string
+                imports: Array<any>
+                declarations: Array<any>
+                exports: Array<any>
+     *      }
+     *
+     * @return ModuleDecorator
+     */
+    function NgModule(config) {
+        return function (target) {
+            const ng1Module = angular.module(config.id, []);
+            const declarations = config.declarations;
+
+            for (var i = 0; i < declarations.length; i++) {
+                let selectorNg2 = declarations[i].selector;
+                let selectorNg1 = toCamelCase(selectorNg2);
+
+                ng1Module.component(selectorNg1, declarations[i]);
+            }
+        }
+    }
+
     /**
      * @arg alias: string
      *
@@ -54,6 +80,7 @@
 
     /**
      * @arg config: {
+              selector?: string
      *        template?: string
      *      }
      *
@@ -64,6 +91,9 @@
             if (config) {
                 if (config.template) {
                     target.template = config.template;
+                }
+                if (config.selector) {
+                    target.selector = config.selector;
                 }
             }
 
@@ -91,6 +121,7 @@
         Input: Input,
         Inject: Inject,
         Output: Output,
-        Component: Component
+        Component: Component,
+        NgModule: NgModule
     };
 }));
