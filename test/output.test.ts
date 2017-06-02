@@ -1,43 +1,53 @@
 import {EventEmitter, Output} from "../index";
 
-class Test {
+class TestWithOneOutput {
     @Output("onAliasCallback") onCallback: Function;
 }
 
+class TestWithManyOutputs {
+    @Output("cb1") callback1: Function;
+    @Output("cb2") callback2: Function;
+}
+
 describe("Output decorator", function() {
-    let instance: any;
+    let testOneOutput: any,
+        testManyOutputs: any;
 
     beforeEach(function() {
-        instance = new Test();
+        testOneOutput = new TestWithOneOutput();
+        testManyOutputs = new TestWithManyOutputs();
     });
 
     test("should create bindings", function () {
-        expect(instance.constructor.bindings).toBeDefined();
+        expect(Object.keys(testOneOutput.constructor.bindings).length).toBe(1);
+        expect(Object.keys(testManyOutputs.constructor.bindings).length).toBe(2);
     });
 
     test("should add `onCallback` to bindings with prefix `__`", function () {
-        expect(instance.constructor.bindings.__onCallback).toBeDefined();
+        expect(testOneOutput.constructor.bindings.__onCallback).toBeDefined();
+        expect(testManyOutputs.constructor.bindings.__callback1).toBeDefined();
+        expect(testManyOutputs.constructor.bindings.__callback2).toBeDefined();
     });
 
     test("should add `onCallback` to bindings as callback", function () {
-        expect(instance.constructor.bindings.__onCallback[0]).toEqual("&");
+        expect(testOneOutput.constructor.bindings.__onCallback[0]).toEqual("&");
     });
 
     test("should add `onCallback` to bindings with alias to `onAliasCallback`", function () {
-        expect(instance.constructor.bindings.__onCallback).toEqual("&onAliasCallback");
+        expect(testOneOutput.constructor.bindings.__onCallback).toEqual("&onAliasCallback");
     });
 
     test("should subscribe to EventEmitter `__onCallback`", function () {
-        instance.onCallback = new EventEmitter();
-        expect(instance.onCallback.listeners.length).toEqual(1);
+        testOneOutput.onCallback = new EventEmitter();
+        expect(testOneOutput.onCallback.listeners.length).toEqual(1);
     });
 
     test("should call callback when emit EventEmitter", function () {
         const callback = jest.fn();
 
-        instance.__onCallback = callback;
-        instance.onCallback = new EventEmitter();
-        instance.onCallback.emit();
+        testOneOutput.__onCallback = callback;
+        testOneOutput.onCallback = new EventEmitter();
+        testOneOutput.onCallback.emit();
 
         expect(callback).toHaveBeenCalled();
     });

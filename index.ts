@@ -43,7 +43,7 @@ export function Output(alias: string): PropertyDecorator {
         Object.defineProperty(target, property, {
             set: function (eventEmitterInstance) {
                 if (eventEmitterInstance && eventEmitterInstance.subscribe) {
-                    eventEmitterInstance.subscribe(function (eventData) {
+                    eventEmitterInstance.subscribe(function (eventData: any) {
                         callbackCache({$event: eventData});
                     });
                     eventEmitterCache = eventEmitterInstance;
@@ -69,7 +69,7 @@ export function Inject(dependencyName: string): ParameterDecorator {
 }
 
 export function Component<IComponentClass>(config: {template?: string}): ClassDecorator {
-    return function (target) {
+    return function (target: any) {
         if (config) {
             if (config.template) {
                 target.template = config.template;
