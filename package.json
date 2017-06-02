@@ -1,13 +1,13 @@
 {
   "name": "ng1-shift",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Angular 1.5+ decorators for writing Angular2 like.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest",
     "postinstall": "npm run build",
-    "build": "tsc index.ts --module umd --target es5",
-    "dev": "rollup -c --watch"
+    "build": "tsc index.ts --module umd --target es5 --outDir dist",
+    "start": "rollup -c --watch"
   },
   "repository": {
     "type": "git",
