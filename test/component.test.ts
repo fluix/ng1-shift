@@ -10,7 +10,7 @@ class Test {
 }
 
 describe("Component decorator", function() {
-    let instance;
+    let instance: any;
 
     beforeEach(function() {
         instance = new Test();

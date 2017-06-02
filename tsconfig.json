@@ -1,19 +1,14 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es6",
+    "target": "es5",
     "noImplicitAny": true,
     "strictNullChecks": true,
     "preserveConstEnums": true,
     "importHelpers": true,
-    "experimentalDecorators": true,
-    "outDir": "dist"
+    "experimentalDecorators": true
   },
   "include": [
     "test/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.test.ts"
   ]
 }
