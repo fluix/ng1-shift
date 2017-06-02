@@ -68,8 +68,8 @@ export function Inject(dependencyName: string): ParameterDecorator {
     };
 }
 
-export function Component(config: {template?: string}): ClassDecorator {
-    return function (target: IComponentClass) {
+export function Component<IComponentClass>(config: {template?: string}): ClassDecorator {
+    return function (target) {
         if (config) {
             if (config.template) {
                 target.template = config.template;

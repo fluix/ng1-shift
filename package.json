@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "postinstall": "npm run build",
     "build": "tsc index.ts --module umd --target es5",
     "dev": "rollup -c --watch"
   },
