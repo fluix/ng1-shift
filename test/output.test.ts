@@ -5,7 +5,7 @@ class Test {
 }
 
 describe("Output decorator", function() {
-    let instance;
+    let instance: any;
 
     beforeEach(function() {
         instance = new Test();

@@ -8,7 +8,7 @@ class Test {
 }
 
 describe("Inject decorator", function() {
-    let instance;
+    let instance: any;
 
     beforeEach(function() {
         instance = new Test(() => {}, () => {});
