@@ -1,16 +1,4 @@
-import {Component, Inject, Input, Output} from "../../index";
-
-class EventEmitter {
-    private listeners: Array<Function> = [];
-
-    emit(event?: any = {}) {
-        this.listeners.forEach(cb => cb.call(null, event));
-    }
-
-    subscribe(cb: Function) {
-        this.listeners.push(cb);
-    }
-}
+import {Component, EventEmitter, Inject, Input, Output} from "../../index";
 
 @Component({
     template: `<div>
@@ -53,8 +41,8 @@ export class AppComponent {
     </div>`
 })
 export class ChildAppComponent {
-    @Output() onAdd: EventEmitter = new EventEmitter;
-    @Output() onRemove: EventEmitter = new EventEmitter;
+    @Output() onAdd: EventEmitter = new EventEmitter();
+    @Output() onRemove: EventEmitter = new EventEmitter();
 
     add() {
         this.onAdd.emit("Added " + Math.random());
