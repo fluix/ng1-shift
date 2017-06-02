@@ -26,7 +26,7 @@ export function Output(alias: string): PropertyDecorator {
         const privateCallbackName = `__${property}`;
         const attrBinding = alias ? alias : property;
         let callbackCache: Function;
-        let eventEmitterCache: {subscribe: Function};
+        let eventEmitterCache: EventEmitter;
 
         target.constructor.bindings[privateCallbackName] = `&${attrBinding}`;
 
