@@ -6,8 +6,7 @@
     "strictNullChecks": true,
     "preserveConstEnums": true,
     "importHelpers": true,
-    "experimentalDecorators": true,
-    "outDir": "dist"
+    "experimentalDecorators": true
   },
   "include": [
     "test/*.ts"

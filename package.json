@@ -4,7 +4,7 @@
   "description": "Angular 1.5+ decorators for writing Angular2 like.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --watchAll",
     "postinstall": "npm run build",
     "build": "tsc index.ts --module umd --outDir dist",
     "start": "rollup -c --watch"
