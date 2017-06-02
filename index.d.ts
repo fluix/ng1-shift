@@ -134,6 +134,6 @@ export interface OutputDecorator {
 
 
 export interface EventEmitter {
-    emit(event?: any);
+    emit(params?: any);
     subscribe(callback: Function);
 }

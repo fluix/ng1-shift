@@ -99,8 +99,8 @@ export function Component<IComponentClass>(config: {template?: string}): ClassDe
 export class EventEmitter {
     private listeners: Array<Function> = [];
 
-    emit(event: any = null) {
-        this.listeners.forEach(callback => callback.call(null, event));
+    emit(params: any = null) {
+        this.listeners.forEach(callback => callback.call(null, params));
     }
 
     subscribe(callback: Function) {
