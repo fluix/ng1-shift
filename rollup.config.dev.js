@@ -5,8 +5,8 @@ import typescript from "rollup-plugin-typescript";
 
 export default {
     entry: "example/src/app.ts",
-    format: "iife",
     dest: "example/bundle.js",
+    format: "iife",
     plugins: [
         rollupAlias({
             tslib: "node_modules/tslib/tslib.es6.js",
