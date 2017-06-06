@@ -7,7 +7,7 @@ interface IComponentClass extends Function {
     constructor: IComponentClass;
 }
 
-export function Input(alias: string): PropertyDecorator {
+export function Input(alias?: string): PropertyDecorator {
     return function (target: IComponentClass, property: string) {
         if (!target.constructor.bindings) {
             target.constructor.bindings = {};
@@ -17,7 +17,7 @@ export function Input(alias: string): PropertyDecorator {
     };
 }
 
-export function Output(alias: string): PropertyDecorator {
+export function Output(alias?: string): PropertyDecorator {
     return function (target: IComponentClass, property: string) {
         if (!target.constructor.bindings) {
             target.constructor.bindings = {};
@@ -68,7 +68,7 @@ export function Inject(dependencyName: string): ParameterDecorator {
     };
 }
 
-export function Component<IComponentClass>(config: {template?: string}): ClassDecorator {
+export function Component<IComponentClass>(config?: {template?: string}): ClassDecorator {
     return function (target: any) {
         if (config) {
             if (config.template) {
