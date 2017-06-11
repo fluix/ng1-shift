@@ -131,3 +131,9 @@ export interface OutputDecorator {
     (bindingPropertyName?: string): any;
     new (bindingPropertyName?: string): any;
 }
+
+
+export interface EventEmitter {
+    emit(event?: any);
+    subscribe(callback: Function);
+}
