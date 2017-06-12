@@ -1,3 +1,5 @@
+import toCamelCase from "./helpers/to-camel-case";
+
 interface IComponentClass extends Function {
     $inject?: Array<string>;
     bindings?: {[key: string]: string};
@@ -68,11 +70,15 @@ export function Inject(dependencyName: string): ParameterDecorator {
     };
 }
 
-export function Component<IComponentClass>(config?: {template?: string}): ClassDecorator {
+export function Component<IComponentClass>(config?: {selector: string, template?: string}): ClassDecorator {
     return function (target: any) {
         if (config) {
             if (config.template) {
                 target.template = config.template;
+            }
+
+            if (config.selector) {
+                target.selector = config.selector;
             }
         }
 
@@ -105,5 +111,29 @@ export class EventEmitter {
 
     subscribe(callback: Function) {
         this.listeners.push(callback);
+    }
+}
+
+export function NgModule(config) {
+    return function (target) {
+        let {id, imports, declarations} = config;
+        let moduleIds = [];
+
+        if (id) {
+            target.id = id;
+        }
+
+        if (imports) {
+            moduleIds = imports.map(mdl => mdl.id);
+        }
+
+        const ng1Module = angular.module(id, [...moduleIds]);
+
+        for (var i = 0; i < declarations.length; i++) {
+            let selectorNg2 = declarations[i].selector;
+            let selectorNg1 = toCamelCase(selectorNg2);
+
+            ng1Module.component(selectorNg1, declarations[i]);
+        }
     }
 }

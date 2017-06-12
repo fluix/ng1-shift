@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Inject, Input, Output} from "../../index";
+import {Component, EventEmitter, Inject, Input, Output} from "../../../../index";
 
 @Component({
+    selector: "ng-shift-component",
     template: `<div>
         <h1>Component content</h1>
 
@@ -11,15 +12,15 @@ import {Component, EventEmitter, Inject, Input, Output} from "../../index";
         </ul>
     </div>`
 })
-export class AppComponent {
+export class NgShiftComponent {
     @Input() prop: string;
 
     list: Array<string> = [];
 
     constructor(
-        @Inject("service1") private service,
-        @Inject("service3") private serviceX,
-        @Inject("service2") private serviceY
+        // @Inject("service1") private service,
+        // @Inject("service3") private serviceX,
+        // @Inject("service2") private serviceY
     ) {}
 
     add(label: string) {
@@ -32,6 +33,7 @@ export class AppComponent {
 }
 
 @Component({
+    selector: "child-app",
     template: `<div>
         <p>Child component buttons:</p>
         <div>

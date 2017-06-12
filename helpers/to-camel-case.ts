@@ -1,4 +1,4 @@
-function toCamelCase(str) {
+export default function toCamelCase(str: string) {
     let newStr = "";
     let newArr = [];
 
@@ -12,5 +12,3 @@ function toCamelCase(str) {
 
     return newStr;
 }
-
-module.exports = toCamelCase;

@@ -3,6 +3,7 @@ export interface Component {
      * Specifies an inline template for an Angular component.
      */
     template?: string;
+    selector: string;
 }
 
 /**
