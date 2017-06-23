@@ -1,10 +1,10 @@
-import {Component} from "../../../index";
+const {Component} = require("./export-switch");
 
 @Component({
     selector: "app-component",
     template: `
-        <ng-shift-component></ng-shift-component>
         <ng-shift-module-component></ng-shift-module-component>
+        <ng-shift-component></ng-shift-component>
     `
 })
 export class AppComponent {}

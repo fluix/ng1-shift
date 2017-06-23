@@ -7,8 +7,7 @@
     "test": "jest --watchAll",
     "postinstall": "npm run build && npm run vendor",
     "vendor": "rollup --config rollup.config.vendor.js ",
-    "build": "rollup --config rollup.config.dist.js",
-    "start": "rollup --config rollup.config.dev.js --watch"
+    "build": "rollup --config rollup.config.dist.js"
   },
   "repository": {
     "type": "git",

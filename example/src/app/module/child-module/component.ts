@@ -1,4 +1,4 @@
-import {Component} from "../../../../../index";
+const {Component} = require("../../export-switch");
 
 @Component({
     selector: "child-module-component",

@@ -1,10 +1,11 @@
-import {NgModule} from "../../../../index";
-import {NgShiftModuleComponent} from "./component";
+const {NgModule} = require("../export-switch");
+
 import {ChildModule} from "./child-module";
+import {NgShiftModuleComponent} from "./component";
 
 @NgModule({
-    id: "ng-shift-module",
     imports: [ ChildModule ],
-    declarations: [ NgShiftModuleComponent ]
+    declarations: [ NgShiftModuleComponent ],
+    exports: [ NgShiftModuleComponent ]
 })
 export class NgShiftModule {}

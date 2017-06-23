@@ -1,9 +1,16 @@
-import {AppComponent} from "./component";
+const {NgModule, BrowserModule} = require("./export-switch");
+
 import {NgShiftModule} from "./module";
 import {NgShiftComponentModule} from "./component/index";
+import {AppComponent} from "./component";
 
-angular.module("ng1-shift", [
-    NgShiftModule.id,
-    NgShiftComponentModule.id
-])
-.component("appComponent", AppComponent);
+@NgModule({
+    imports: [
+        BrowserModule,
+        NgShiftModule,
+        NgShiftComponentModule
+    ],
+    declarations: [ AppComponent ],
+    bootstrap: [ AppComponent ]
+})
+export class AppModule {}

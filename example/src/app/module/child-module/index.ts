@@ -1,8 +1,9 @@
-import {NgModule} from "../../../../../index";
+const {NgModule} = require("../../export-switch");
+
 import {ChildComponent} from "./component";
 
 @NgModule({
-    id: "ng-shift-module.child-module-id",
-    declarations: [ ChildComponent ]
+    declarations: [ ChildComponent ],
+    exports: [ ChildComponent ]
 })
 export class ChildModule {}

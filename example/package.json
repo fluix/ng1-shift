@@ -1,0 +1,64 @@
+{
+  "name": "ng1-shift-dev",
+  "version": "0.0.6",
+  "description": "Angular 1.5+ decorators for writing Angular2 like.",
+  "main": "main.ts",
+  "scripts": {
+    "dev:ng1": "webpack-dev-server --config config/webpack.ng1.config.js",
+    "dev:ng2": "webpack-dev-server --config config/webpack.ng2.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/readdle/ng1-shift.git"
+  },
+  "keywords": [
+    "angular",
+    "angularJS",
+    "ng",
+    "ng1",
+    "components",
+    "migrate"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/readdle/ng1-shift/issues"
+  },
+  "homepage": "https://github.com/readdle/ng1-shift#readme",
+  "jest": {
+    "transform": {
+      ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(\\.(test|spec))\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ]
+  },
+  "devDependencies": {
+    "@angular/common": "4.0.2",
+    "@angular/compiler": "4.0.2",
+    "@angular/compiler-cli": "4.0.2",
+    "@angular/core": "4.0.2",
+    "@angular/forms": "4.0.2",
+    "@angular/http": "4.0.2",
+    "@angular/platform-browser": "4.0.2",
+    "@angular/platform-browser-dynamic": "4.0.2",
+    "@angular/platform-server": "4.0.2",
+    "@angular/router": "4.0.2",
+    "@types/core-js": "0.9.35",
+    "@types/node": "7.0.5",
+    "angular-router-loader": "0.6.0",
+    "core-js": "2.4.1",
+    "html-webpack-plugin": "^2.28.0",
+    "object-assign": "^4.1.1",
+    "raw-loader": "0.5.1",
+    "rxjs": "5.1.0",
+    "ts-loader": "^2.0.2",
+    "typescript": "2.3.4",
+    "webpack": "2.2.1",
+    "webpack-dev-server": "2.3.0",
+    "webpack-merge": "2.6.1",
+    "zone.js": "0.8.5"
+  }
+}

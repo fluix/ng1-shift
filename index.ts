@@ -114,20 +114,21 @@ export class EventEmitter {
     }
 }
 
-export function NgModule(config) {
-    return function (target) {
-        let {id, imports, declarations} = config;
+export function NgModule(config: any) {
+    return function (target: any) {
+        let {imports, declarations} = config;
         let moduleIds = [];
 
-        if (id) {
-            target.id = id;
-        }
-
         if (imports) {
-            moduleIds = imports.map(mdl => mdl.id);
+            /*
+                skip NG2 modules and prepare moduleIds collection
+            */
+            moduleIds = imports
+                .filter((mdl: any) => mdl !== void 0)
+                .map((mdl: any) => mdl.name);
         }
 
-        const ng1Module = angular.module(id, [...moduleIds]);
+        const ng1Module = angular.module(target.name, [...moduleIds]);
 
         for (var i = 0; i < declarations.length; i++) {
             let selectorNg2 = declarations[i].selector;

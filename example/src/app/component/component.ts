@@ -1,16 +1,9 @@
-import {Component, EventEmitter, Inject, Input, Output} from "../../../../index";
+const {Component, EventEmitter, Inject, Input, Output} = require("../export-switch");
+const template = process.env.NG2 ? require("./template-ng2.html") : require("./template-ng1.html");
 
 @Component({
     selector: "ng-shift-component",
-    template: `<div>
-        <h1>Component content</h1>
-
-        <child-app on-add="$ctrl.add($event)" on-remove="$ctrl.remove()"></child-app>
-
-        <ul ng-if="$ctrl.list.length > 0">
-            <li ng-repeat="label in $ctrl.list">{{::label}}</li>
-        </ul>
-    </div>`
+    template
 })
 export class NgShiftComponent {
     @Input() prop: string;
@@ -29,28 +22,5 @@ export class NgShiftComponent {
 
     remove() {
         this.list.splice(0, 1);
-    }
-}
-
-@Component({
-    selector: "child-app",
-    template: `<div>
-        <p>Child component buttons:</p>
-        <div>
-            <button ng-click="$ctrl.add()">Add</button>
-            <button ng-click="$ctrl.remove()">Remove</button>
-        </div>
-    </div>`
-})
-export class ChildAppComponent {
-    @Output() onAdd: EventEmitter = new EventEmitter();
-    @Output() onRemove: EventEmitter = new EventEmitter();
-
-    add() {
-        this.onAdd.emit("Added " + Math.random());
-    }
-
-    remove() {
-        this.onRemove.emit();
     }
 }
