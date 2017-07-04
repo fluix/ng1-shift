@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<% if (htmlWebpackPlugin.options.NG2) { %>
+    <html lang="en-US">
+        <head>
+            <meta charset="UTF-8">
+            <title>NG1-shift Example(NG2 compatibility)</title>
+            <base href="/">
+        </head>
+        <body>
+            <app-component></app-component>
+        </body>
+    </html>
+<% } else { %>
+    <html lang="en-US" ng-app="AppModule" ng-strict-di>
+        <head>
+            <meta charset="UTF-8">
+            <title>NG1-shift Example</title>
+        </head>
+        <body>
+            <app-component></app-component>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        </body>
+    </html>
+<% } %>

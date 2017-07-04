@@ -25,16 +25,6 @@
     "url": "https://github.com/readdle/ng1-shift/issues"
   },
   "homepage": "https://github.com/readdle/ng1-shift#readme",
-  "jest": {
-    "transform": {
-      ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(\\.(test|spec))\\.ts$",
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ]
-  },
   "devDependencies": {
     "@angular/common": "4.0.2",
     "@angular/compiler": "4.0.2",

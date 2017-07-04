@@ -7,10 +7,10 @@ module.exports = assign({}, baseConfig, {
         bundle: "./app"
     },
 
-    // plugins: [
-    //     new HtmlWebpackPlugin({
-    //         template: "./index.ejs",
-    //         inject: "body",
-    //     })
-    // ]
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "./index.ejs",
+            inject: "body"
+        })
+    ]
 });
