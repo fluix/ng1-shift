@@ -9,6 +9,17 @@ module.exports = assign({}, baseConfig, {
         bundle: "./app"
     },
 
+    module: {
+        rules: [
+            {test: /\.ts$/, use: "ts"},
+            {test: /\.html$/, use: "raw"}
+        ],
+
+        // WARNING in ./~/@angular/core/@angular/core.es5.js
+        // 5870:15-36 Critical dependency: the request of a dependency is an expression
+        exprContextCritical: false
+    },
+
     plugins: [
         new HtmlWebpackPlugin({
             template: "./index.ejs",

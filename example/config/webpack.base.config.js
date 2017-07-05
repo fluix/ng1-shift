@@ -19,15 +19,6 @@ module.exports = {
         moduleExtensions: ["-loader"]
     },
 
-    module: {
-        rules: [
-            {test: /\.ts$/, use: "ts"},
-            {test: /\.html$/, loader: "raw"}
-        ],
-
-        exprContextCritical: false
-    },
-
     devServer: {
         port: "3000",
         inline: true,
