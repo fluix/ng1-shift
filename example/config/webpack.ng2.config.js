@@ -3,8 +3,8 @@ const DefinePlugin = require("webpack/lib/DefinePlugin");
 const ContextReplacementPlugin = require("webpack/lib/ContextReplacementPlugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const baseConfig = require("./webpack.base.config");
-const polyfills = require("./ng2-deps/polyfills");
-const vendor = require("./ng2-deps/vendor");
+const polyfills = require("./deps/ng2/polyfills");
+const vendor = require("./deps/ng2/vendor");
 
 const plugins = [
     // Provides context to Angular"s use of System.import

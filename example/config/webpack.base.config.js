@@ -23,7 +23,9 @@ module.exports = {
         rules: [
             {test: /\.ts$/, use: "ts"},
             {test: /\.html$/, loader: "raw"}
-        ]
+        ],
+
+        exprContextCritical: false
     },
 
     devServer: {
