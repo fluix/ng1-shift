@@ -2,19 +2,7 @@ const {NgModule, CommonModule} = require("../export-switch");
 
 import {NgShiftComponent} from "./component";
 import {ChildAppComponent} from "./child/component";
-
-class Service1 {
-    open1() {}
-}
-class Service2 {
-    open2() {}
-}
-class Service3 {
-    open3() {}
-}
-class Service4 {
-    open4() {}
-}
+import {Service1} from "./services/service1";
 
 // angular.module("ng-shift-component", [])
 //     .service("service1", Service1)
@@ -28,6 +16,7 @@ class Service4 {
         NgShiftComponent,
         ChildAppComponent
     ],
+    providers: [ Service1 ],
     exports: [ NgShiftComponent ]
 })
 export class NgShiftComponentModule {}

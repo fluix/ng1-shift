@@ -116,7 +116,7 @@ export class EventEmitter {
 
 export function NgModule(config: any) {
     return function (target: any) {
-        let {imports, declarations} = config;
+        let {imports, declarations, providers} = config;
         let moduleIds = [];
 
         if (imports) {
@@ -128,6 +128,7 @@ export function NgModule(config: any) {
                 .map((mdl: any) => mdl.name);
         }
 
+
         const ng1Module = angular.module(target.name, [...moduleIds]);
 
         for (var i = 0; i < declarations.length; i++) {
@@ -135,6 +136,18 @@ export function NgModule(config: any) {
             let selectorNg1 = toCamelCase(selectorNg2);
 
             ng1Module.component(selectorNg1, declarations[i]);
+        }
+
+        if (providers) {
+            for (var i = 0; i < providers.length; i++) {
+
+                if (providers[0].name === "Service1") {
+                    console.log(1)
+
+                    let serviceToken = providers[i].name;
+                    ng1Module.service("service1", providers[0])
+                }
+            }
         }
     }
 }

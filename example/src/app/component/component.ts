@@ -1,6 +1,8 @@
 const {Component, EventEmitter, Inject, Input, Output} = require("../export-switch");
 const template = process.env.NG2 ? require("./template-ng2.html") : require("./template-ng1.html");
 
+import {Service1} from "./services/service1";
+
 @Component({
     selector: "ng-shift-component",
     template
@@ -10,10 +12,13 @@ export class NgShiftComponent {
 
     list: Array<string> = [];
 
+    static $inject = [
+        "service1"
+    ];
+
     constructor(
-        // @Inject("service1") private service,
-        // @Inject("service3") private serviceX,
-        // @Inject("service2") private serviceY
+        private srv1: any
+        // private srv1: Service1
     ) {}
 
     add(label: string) {
