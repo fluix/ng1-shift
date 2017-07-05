@@ -14,7 +14,7 @@ const plugins = [
     ),
     new HtmlWebpackPlugin({
         template: "./index.ejs",
-        inject: "body",
+        inject: false,
         NG2: true
     }),
     new DefinePlugin({

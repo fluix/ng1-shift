@@ -5,14 +5,14 @@ const vendor = require("./deps/ng1/vendor");
 
 module.exports = assign({}, baseConfig, {
     entry: {
-        vendor,
+        vendor: vendor,
         bundle: "./app"
     },
 
     plugins: [
         new HtmlWebpackPlugin({
             template: "./index.ejs",
-            inject: "body"
+            inject: false
         })
     ]
 });
