@@ -7,10 +7,24 @@ export function NgModule({imports, declarations, providers}: any) {
 
         if (imports) {
             let preparedIds = imports
-                .filter((mdl: any) => mdl !== void 0)
-                .map((mdl: any) => mdl.name);
+                .filter((mdl: any) => {
+                    return mdl !== void 0 && (mdl.name && mdl.name.indexOf("RouterModule") === -1 || mdl === "ui.router")
+                })
+                .map((mdl: any) => {
+                    if (mdl.name) {
+                        return mdl.name;
+                    }
 
+                    return mdl;
+                });
             ng1ModuleIds.push(...preparedIds);
+
+            const router = imports
+                .find((mdl: any) => mdl !== void 0 && mdl.name && mdl.name.indexOf("RouterModule") !== -1);
+
+            if (router) {
+                ng1Module.config(router);
+            }
         }
 
         if (declarations) {

@@ -5,6 +5,7 @@ const {Component} = require("./export-switch");
     template: `
         <ng-shift-module-component></ng-shift-module-component>
         <ng-shift-component></ng-shift-component>
+        <ng-shift-router></ng-shift-router>
     `
 })
 export class AppComponent {}

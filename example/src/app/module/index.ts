@@ -1,6 +1,6 @@
 const {NgModule} = require("../export-switch");
 
-import {ChildModule} from "./child-module";
+import {ChildModule} from "./child";
 import {NgShiftModuleComponent} from "./component";
 
 @NgModule({

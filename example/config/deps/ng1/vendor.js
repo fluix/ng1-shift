@@ -1,3 +1,4 @@
 module.exports = [
-    "angular"
+    "angular",
+    "angular-ui-router"
 ];

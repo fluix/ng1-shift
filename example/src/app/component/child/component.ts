@@ -1,5 +1,5 @@
 const {Component, EventEmitter, Inject, Input, Output} = require("../../export-switch");
-const template = process.env.NG2 ? require("./template-ng2.html") : require("./template-ng1.html");
+const template = process.env.NG2 ? require("./templates/ng2.html") : require("./templates/ng1.html");
 
 @Component({
     selector: "child-app",
