@@ -116,38 +116,57 @@ export class EventEmitter {
 
 export function NgModule(config: any) {
     return function (target: any) {
-        let {imports, declarations, providers} = config;
+        const {imports, declarations, providers} = config;
         let moduleIds = [];
 
         if (imports) {
-            /*
-                skip NG2 modules and prepare moduleIds collection
-            */
             moduleIds = imports
                 .filter((mdl: any) => mdl !== void 0)
                 .map((mdl: any) => mdl.name);
         }
 
-
         const ng1Module = angular.module(target.name, [...moduleIds]);
 
-        for (var i = 0; i < declarations.length; i++) {
-            let selectorNg2 = declarations[i].selector;
-            let selectorNg1 = toCamelCase(selectorNg2);
+        if (declarations) {
+            declarations.forEach((declaration: any) => {
+                const selectorNg2 = declaration.selector;
+                const selectorNg1 = toCamelCase(selectorNg2);
 
-            ng1Module.component(selectorNg1, declarations[i]);
+                ng1Module.component(selectorNg1, declaration);
+            });
         }
 
         if (providers) {
-            for (var i = 0; i < providers.length; i++) {
+            const FN_ARGS = /^function\s*[^\(]*\(\s*([^\)]*)\)/m;
+            const FN_ARG_SPLIT = /,/;
+            const FN_ARG = /^\s*(_?)(\S+?)\1\s*$/;
+            const STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
 
-                if (providers[0].name === "Service1") {
-                    console.log(1)
+            declarations.forEach((declaration: any) => {
+                const fnString = declaration.toString();
 
-                    let serviceToken = providers[i].name;
-                    ng1Module.service("service1", providers[0])
+                fnString.split(FN_ARG_SPLIT);
+                fnString.replace(STRIP_COMMENTS, "");
+                const args = fnString.match(FN_ARGS)[1];
+
+                if (args !== "") {
+                    if (!declaration.$inject) {
+                        declaration.$inject = [];
+                    }
+
+                    const types = Reflect.getMetadata("design:paramtypes", declaration);
+                    const injectedServices = types.map((a: any) => a.name);
+
+                    providers.forEach((provider: any) => {
+                        const serviceKey = provider.name;
+                        const injectIndex = injectedServices.indexOf(serviceKey);
+
+                        declaration.$inject[injectIndex] = serviceKey;
+                        ng1Module.service(serviceKey, provider);
+                    });
+
                 }
-            }
+            });
         }
     }
 }

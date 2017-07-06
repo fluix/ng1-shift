@@ -3,6 +3,8 @@ const root = require("./helpers/root");
 module.exports = {
     context: root("src"),
 
+    devtool: "cheap-inline-module-source-map",
+
     output: {
         path: "/",
         filename: "build/[name].js"

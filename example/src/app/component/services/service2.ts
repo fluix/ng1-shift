@@ -1,5 +1,5 @@
 export class Service2 {
-    open2() {
+    open() {
         console.log("hello from Service2");
     }
 }
