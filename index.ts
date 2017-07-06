@@ -1,4 +1,4 @@
-import toCamelCase from "./helpers/to-camel-case";
+export * from './decorators/ng-module';
 
 interface IComponentClass extends Function {
     $inject?: Array<string>;
@@ -111,62 +111,5 @@ export class EventEmitter {
 
     subscribe(callback: Function) {
         this.listeners.push(callback);
-    }
-}
-
-export function NgModule(config: any) {
-    return function (target: any) {
-        const {imports, declarations, providers} = config;
-        let moduleIds = [];
-
-        if (imports) {
-            moduleIds = imports
-                .filter((mdl: any) => mdl !== void 0)
-                .map((mdl: any) => mdl.name);
-        }
-
-        const ng1Module = angular.module(target.name, [...moduleIds]);
-
-        if (declarations) {
-            declarations.forEach((declaration: any) => {
-                const selectorNg2 = declaration.selector;
-                const selectorNg1 = toCamelCase(selectorNg2);
-
-                ng1Module.component(selectorNg1, declaration);
-            });
-        }
-
-        if (providers) {
-            const FN_ARGS = /^function\s*[^\(]*\(\s*([^\)]*)\)/m;
-            const FN_ARG_SPLIT = /,/;
-            const FN_ARG = /^\s*(_?)(\S+?)\1\s*$/;
-            const STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
-
-            declarations.forEach((declaration: any) => {
-                const fnString = declaration.toString();
-
-                fnString.split(FN_ARG_SPLIT);
-                fnString.replace(STRIP_COMMENTS, "");
-                const args = fnString.match(FN_ARGS)[1];
-
-                if (args !== "") {
-                    if (!declaration.$inject) {
-                        declaration.$inject = [];
-                    }
-
-                    const types = Reflect.getMetadata("design:paramtypes", declaration);
-                    const injectedServices = types.map((a: any) => a.name);
-
-                    providers.forEach((provider: any) => {
-                        const serviceKey = provider.name;
-                        const injectIndex = injectedServices.indexOf(serviceKey);
-
-                        declaration.$inject[injectIndex] = serviceKey;
-                        ng1Module.service(serviceKey, provider);
-                    });
-
-                }
-            });
-        }
     }
 }

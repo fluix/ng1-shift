@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --watchAll",
     "postinstall": "npm run build",
-    "build": "rollup --config rollup.config.dist.js"
+    "build": "rollup --config rollup.config.js"
   },
   "repository": {
     "type": "git",
