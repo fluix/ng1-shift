@@ -1,4 +1,4 @@
-const {NgModule, BrowserModule} = require("./export-switch");
+const {NgModule, BrowserModule, UIRouterModule} = require("./export-switch");
 
 import {AppComponent} from "./component";
 import {NgShiftModule} from "./module";
@@ -7,7 +7,7 @@ import {NgShiftRouterTestModule} from "./router";
 
 @NgModule({
     imports: [
-        "ui.router",
+        UIRouterModule,
         BrowserModule,
         NgShiftModule,
         NgShiftComponentModule,

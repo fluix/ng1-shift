@@ -8,7 +8,7 @@ export function NgModule({imports, declarations, providers}: any) {
         if (imports) {
             let preparedIds = imports
                 .filter((mdl: any) => {
-                    return mdl !== void 0 && (mdl.name && mdl.name.indexOf("RouterModule") === -1 || mdl === "ui.router")
+                    return mdl.name && mdl.name.indexOf("RouterModule") === -1 || mdl === "ui.router"
                 })
                 .map((mdl: any) => {
                     if (mdl.name) {
@@ -20,7 +20,7 @@ export function NgModule({imports, declarations, providers}: any) {
             ng1ModuleIds.push(...preparedIds);
 
             const router = imports
-                .find((mdl: any) => mdl !== void 0 && mdl.name && mdl.name.indexOf("RouterModule") !== -1);
+                .find((mdl: any) => mdl.name && mdl.name.indexOf("RouterModule") !== -1);
 
             if (router) {
                 ng1Module.config(router);
