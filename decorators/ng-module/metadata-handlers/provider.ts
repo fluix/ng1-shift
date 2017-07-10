@@ -1,0 +1,21 @@
+export default function providerHandler(ng1Module, providers, declarations) {
+    declarations.forEach((declaration: any) => {
+        const injections = Reflect.getMetadata("design:paramtypes", declaration);
+
+        if (injections) {
+            const injectedServices = injections.map(({ name }: any) => name);
+
+            if (!declaration.$inject) {
+                declaration.$inject = [];
+            }
+
+            providers.forEach((provider: any) => {
+                const serviceToken = provider.name;
+                const injectIndex = injectedServices.indexOf(serviceToken);
+
+                declaration.$inject[injectIndex] = serviceToken;
+                ng1Module.service(serviceToken, provider);
+            });
+        }
+    });
+}
