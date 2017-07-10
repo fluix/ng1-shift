@@ -6,24 +6,25 @@ export function NgModule({imports, declarations, providers}: any) {
         let ng1Module = angular.module(target.name, ng1ModuleIds);
 
         if (imports) {
-            let preparedIds = imports
-                .filter((mdl: any) => {
-                    return mdl.name && mdl.name.indexOf("RouterModule") === -1 || mdl === "ui.router"
-                })
-                .map((mdl: any) => {
+            const modules = imports.filter(({ $inject }: any) =>
+                !($inject && $inject.find((i: any) => i === "$stateProvider")));
+
+            const ng1RouterConfig = imports.find(({ $inject }: any) =>
+                $inject && $inject.find((i: any) => i === "$stateProvider"));
+
+            if (modules.length) {
+                const preparedIds = modules.map((mdl: any) => {
                     if (mdl.name) {
                         return mdl.name;
                     }
 
                     return mdl;
                 });
-            ng1ModuleIds.push(...preparedIds);
+                ng1ModuleIds.push(...preparedIds);
+            }
 
-            const router = imports
-                .find((mdl: any) => mdl.name && mdl.name.indexOf("RouterModule") !== -1);
-
-            if (router) {
-                ng1Module.config(router);
+            if (ng1RouterConfig) {
+                ng1Module.config(ng1RouterConfig);
             }
         }
 
@@ -41,7 +42,7 @@ export function NgModule({imports, declarations, providers}: any) {
                 const injections = Reflect.getMetadata("design:paramtypes", declaration);
 
                 if (injections) {
-                    const injectedServices = injections.map((a: any) => a.name);
+                    const injectedServices = injections.map(({ name }: any) => name);
 
                     if (!declaration.$inject) {
                         declaration.$inject = [];

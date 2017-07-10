@@ -7,8 +7,9 @@ import {NgShiftRouterTestModule} from "./router";
 
 @NgModule({
     imports: [
-        UIRouterModule,
-        BrowserModule,
+        ...UIRouterModule,
+        ...BrowserModule,
+
         NgShiftModule,
         NgShiftComponentModule,
         NgShiftRouterTestModule

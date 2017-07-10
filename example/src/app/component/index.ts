@@ -7,7 +7,7 @@ import {Service2} from "./services/service2";
 import {Service3} from "./services/service3";
 
 @NgModule({
-    imports: [ CommonModule ],
+    imports: [ ...CommonModule ],
     declarations: [
         NgShiftComponent,
         ChildAppComponent

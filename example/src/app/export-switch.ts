@@ -1,21 +1,23 @@
 if (process.env.NG2) {
     var {NgModule, Component, EventEmitter, Inject, Input, Output} = require("@angular/core");
 
-    var {BrowserModule} = require("@angular/platform-browser");
-    var {CommonModule} = require("@angular/common");
-    var UIRouterModule: any = [];
+    var BrowserModule = [require("@angular/platform-browser").BrowserModule] as any;
+    var CommonModule = [require("@angular/common").CommonModule] as any;
+    var UIRouterModule = [] as any;
 } else {
     var {NgModule, Component, EventEmitter, Inject, Input, Output} = require("../../../index");
 
-    var BrowserModule: any = [];
-    var CommonModule: any = [];
-    var UIRouterModule: any = "ui.router";
+    var BrowserModule = [] as any;
+    var CommonModule = [] as any;
+    var UIRouterModule = ["ui.router"] as any;
 }
 
 module.exports = {
     UIRouterModule,
+
     BrowserModule,
     CommonModule,
+
     NgModule,
     Component,
     EventEmitter,
