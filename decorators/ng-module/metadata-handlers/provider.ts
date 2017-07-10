@@ -1,4 +1,4 @@
-export default function providerHandler(ng1Module, providers, declarations) {
+export default function providerHandler(ng1Module: any, providers: any, declarations: any) {
     declarations.forEach((declaration: any) => {
         const injections = Reflect.getMetadata("design:paramtypes", declaration);
 

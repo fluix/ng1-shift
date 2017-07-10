@@ -1,4 +1,4 @@
-export default function importHandler(ng1Module, ng1ModuleIds, imports) {
+export default function importHandler(ng1Module: any, ng1ModuleIds: any, imports: any) {
     const modules = imports.filter(({ $inject }: any) =>
         !($inject && $inject.find((i: any) => i === "$stateProvider")));
 
