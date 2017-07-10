@@ -18,3 +18,7 @@ import {NgShiftRouterTestModule} from "./router";
     bootstrap: [ AppComponent ]
 })
 export class AppModule {}
+
+if (!process.env.NG2) {
+    AppModule.ng1Module.run(() => console.log("hello from run block"));
+}
