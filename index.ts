@@ -70,7 +70,7 @@ export function Inject(dependencyName: string): ParameterDecorator {
     };
 }
 
-export function Component<IComponentClass>(config?: {selector: string, template?: string}): ClassDecorator {
+export function Component<IComponentClass>(config?: {selector?: string, template?: string}): ClassDecorator {
     return function (target: any) {
         if (config) {
             if (config.template) {
