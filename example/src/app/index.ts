@@ -4,6 +4,7 @@ import {AppComponent} from "./component";
 import {NgShiftModule} from "./module";
 import {NgShiftComponentModule} from "./component/index";
 import {NgShiftRouterTestModule} from "./router";
+import {NgShiftInjectableModule} from "./injectable";
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import {NgShiftRouterTestModule} from "./router";
 
         NgShiftModule,
         NgShiftComponentModule,
-        NgShiftRouterTestModule
+        NgShiftRouterTestModule,
+        NgShiftInjectableModule
     ],
     declarations: [ AppComponent ],
     bootstrap: [ AppComponent ]
@@ -20,5 +22,5 @@ import {NgShiftRouterTestModule} from "./router";
 export class AppModule {}
 
 if (!process.env.NG2) {
-    AppModule.ng1Module.run(() => console.log("hello from run block"));
+    // AppModule.ng1Module.run(() => console.log("hello from run block"));
 }

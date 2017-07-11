@@ -6,6 +6,7 @@ const {Component} = require("./export-switch");
         <ng-shift-module-component></ng-shift-module-component>
         <ng-shift-component></ng-shift-component>
         <ng-shift-router></ng-shift-router>
+        <ng-shift-injectable></ng-shift-injectable>
     `
 })
 export class AppComponent {}

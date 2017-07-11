@@ -1,3 +1,4 @@
+export * from './decorators/injectable';
 export * from './decorators/ng-module';
 
 interface IComponentClass extends Function {
