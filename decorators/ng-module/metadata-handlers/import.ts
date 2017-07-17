@@ -1,4 +1,6 @@
-export default function importHandler(ng1Module: any, ng1ModuleIds: any, imports: any) {
+export default function importHandler(imports: any) {
+    let ng1ModuleIds: Array<string> = [];
+
     const modules = imports.filter(({ $inject }: any) =>
         !($inject && $inject.find((i: any) => i === "$stateProvider")));
 
@@ -6,17 +8,17 @@ export default function importHandler(ng1Module: any, ng1ModuleIds: any, imports
         $inject && $inject.find((i: any) => i === "$stateProvider"));
 
     if (modules.length) {
-        const preparedIds = modules.map((mdl: any) => {
-            if (mdl.name) {
-                return mdl.name;
+        ng1ModuleIds = modules.map((mdl: any) => {
+            if (mdl.ngShiftModuleName) {
+                return mdl.ngShiftModuleName;
             }
 
             return mdl;
         });
-        ng1ModuleIds.push(...preparedIds);
     }
 
-    if (ng1RouterConfig) {
-        ng1Module.config(ng1RouterConfig);
+    return {
+        ng1ModuleIds,
+        ng1RouterConfig
     }
 }
