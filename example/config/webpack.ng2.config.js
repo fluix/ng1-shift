@@ -1,4 +1,3 @@
-const assign = require("object-assign");
 const DefinePlugin = require("webpack/lib/DefinePlugin");
 const ContextReplacementPlugin = require("webpack/lib/ContextReplacementPlugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -24,7 +23,7 @@ const plugins = [
     })
 ];
 
-module.exports = assign({}, baseConfig, {
+module.exports = Object.assign({}, baseConfig, {
     entry: {
         polyfills,
         vendor,

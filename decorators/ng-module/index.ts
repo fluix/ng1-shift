@@ -24,7 +24,5 @@ export function NgModule({imports, declarations, providers, directRegister}: any
         if (directRegister) {
             directRegister(ng1Module);
         }
-
-        target.ng1Module = ng1Module;
     }
 }

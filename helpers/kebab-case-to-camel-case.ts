@@ -1,4 +1,4 @@
-export default function toCamelCase(str: string) {
+export default function kebabCaseToCamelCase(str: string) {
     if (str.indexOf("-") !== -1) {
         const newArr = str.split("-");
 
