@@ -1,3 +1,5 @@
+import "reflect-metadata";
+
 import importHandler from "./metadata-handlers/import";
 import daclarationHandler from "./metadata-handlers/declaration";
 import providerHandler from "./metadata-handlers/provider";
