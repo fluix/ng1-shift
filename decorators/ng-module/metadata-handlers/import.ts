@@ -9,8 +9,8 @@ export default function importHandler(imports: any) {
 
     if (modules.length) {
         ng1ModuleIds = modules.map((mdl: any) => {
-            if (mdl.ngShiftModuleName) {
-                return mdl.ngShiftModuleName;
+            if (mdl.name) {
+                return mdl.name;
             }
 
             return mdl;
