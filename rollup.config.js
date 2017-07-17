@@ -11,5 +11,6 @@ export default {
         typescript({
             typescript: ts
         })
-    ]
+    ],
+    external: ["reflect-metadata"]
 }
