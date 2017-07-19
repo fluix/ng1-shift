@@ -1,8 +1,16 @@
+import {NgModuleDecorator} from "./decorators/ng-module/interfaces";
+
+/**
+ * NgModule decorator and metadata.
+ */
+export declare const NgModule: NgModuleDecorator;
+
 export interface Component {
     /**
      * Specifies an inline template for an Angular component.
      */
     template?: string;
+    selector?: string;
 }
 
 /**
