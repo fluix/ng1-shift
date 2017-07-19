@@ -3,8 +3,7 @@ import "reflect-metadata";
 import importHandler from "./metadata-handlers/import";
 import daclarationHandler from "./metadata-handlers/declaration";
 import providerHandler from "./metadata-handlers/provider";
-
-let ng1ModuleNameStore = [] as any;
+import counter from '../../helpers/counter';
 
 export function NgModule({imports, declarations, providers, directRegister}: any) {
     return function (target: any) {
@@ -15,13 +14,13 @@ export function NgModule({imports, declarations, providers, directRegister}: any
             var {ng1ModuleIds, ng1RouterConfig} = importHandler(imports);
         }
 
-        if (ng1ModuleNameStore.indexOf(target.name)) {
-            ng1ModuleNameStore.push(target.name)
-        } else {
-            throw `🚔 NG1SHIFT: Module name ${target.name} already exists`;
+        target.ng1ShiftModuleName = `${target.name}-${counter("moduleName")}`;
+
+        if (target.name === "AppModule") {
+            target.ng1ShiftModuleName = target.name;
         }
 
-        const ng1Module = angular.module(target.name, ng1ModuleIds);
+        const ng1Module = angular.module(target.ng1ShiftModuleName, ng1ModuleIds);
 
         if (ng1RouterConfig) {
             ng1Module.config(ng1RouterConfig);
