@@ -1,5 +1,9 @@
 interface NgModule {
     /**
+     * Specifies a top level module name.
+     */
+    id?: string;
+    /**
      * Specifies a list of modules whose exported entities should be available to templates in this module.
      */
     imports?: Array<any>;
