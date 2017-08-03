@@ -1,5 +1,6 @@
 export default function providerHandler(ng1Module: any, providers: any, declarations: any) {
     declarations.forEach((declaration: any) => {
+        debugger
         const injections = Reflect.getMetadata("design:paramtypes", declaration);
 
         if (injections) {

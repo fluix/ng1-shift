@@ -1,3 +1,4 @@
+import "reflect-metadata";
 const {NgModule, BrowserModule, UIRouterModule} = require("./export-switch");
 
 import {AppComponent} from "./component";
@@ -7,6 +8,7 @@ import {NgShiftRouterTestModule} from "./router";
 import {NgShiftInjectableModule} from "./injectable";
 
 @NgModule({
+    id: "app-module",
     imports: [
         ...UIRouterModule,
         ...BrowserModule,
@@ -20,7 +22,3 @@ import {NgShiftInjectableModule} from "./injectable";
     bootstrap: [ AppComponent ]
 })
 export class AppModule {}
-
-if (!process.env.NG2) {
-    // AppModule.ng1Module.run(() => console.log("hello from run block"));
-}

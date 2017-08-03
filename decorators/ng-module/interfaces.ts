@@ -1,5 +1,9 @@
 interface NgModule {
     /**
+     * Specifies a top level module name.
+     */
+    id?: string;
+    /**
      * Specifies a list of modules whose exported entities should be available to templates in this module.
      */
     imports?: Array<any>;
@@ -11,6 +15,10 @@ interface NgModule {
      * Specifies a list of dependecies which should be injected to this module.
      */
     providers?: Array<any>;
+    /**
+     *  Has current module as parameter and allows to make a direct registration of any ng1 entity
+     */
+    directRegister?: (ng1Module) => void
 }
 
 /**

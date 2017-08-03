@@ -1,10 +1,9 @@
-const assign = require("object-assign");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const baseConfig = require("./webpack.base.config");
 const polyfills = require("./deps/ng1/polyfills");
 const vendor = require("./deps/ng1/vendor");
 
-module.exports = assign({}, baseConfig, {
+module.exports = Object.assign({}, baseConfig, {
     entry: {
         polyfills,
         vendor,

@@ -1,14 +1,27 @@
 import importHandler from "./metadata-handlers/import";
 import daclarationHandler from "./metadata-handlers/declaration";
 import providerHandler from "./metadata-handlers/provider";
+import counter from '../../helpers/counter';
 
-export function NgModule({imports, declarations, providers, ng1RunConfig}: any) {
+export function NgModule({id, imports, declarations, providers, directRegister}: any) {
     return function (target: any) {
-        let ng1ModuleIds: Array<string> = [];
-        let ng1Module = angular.module(target.name, ng1ModuleIds);
+        var ng1ModuleIds: Array<string> = [];
+        var ng1RouterConfig;
 
         if (imports && imports.length) {
-            importHandler(ng1Module, ng1ModuleIds, imports);
+            var {ng1ModuleIds, ng1RouterConfig} = importHandler(imports);
+        }
+
+        target.ng1ShiftModuleName = `${target.name}-${counter("moduleName")}`;
+
+        if (id === "app-module") {
+            target.ng1ShiftModuleName = id;
+        }
+
+        const ng1Module = angular.module(target.ng1ShiftModuleName, ng1ModuleIds);
+
+        if (ng1RouterConfig) {
+            ng1Module.config(ng1RouterConfig);
         }
 
         if (declarations && declarations.length) {
@@ -19,6 +32,8 @@ export function NgModule({imports, declarations, providers, ng1RunConfig}: any) 
             providerHandler(ng1Module, providers, declarations);
         }
 
-        target.ng1Module = ng1Module;
+        if (directRegister) {
+            directRegister(ng1Module);
+        }
     }
 }
