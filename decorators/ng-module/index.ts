@@ -1,11 +1,9 @@
-import "reflect-metadata";
-
 import importHandler from "./metadata-handlers/import";
 import daclarationHandler from "./metadata-handlers/declaration";
 import providerHandler from "./metadata-handlers/provider";
 import counter from '../../helpers/counter';
 
-export function NgModule({imports, declarations, providers, directRegister}: any) {
+export function NgModule({id, imports, declarations, providers, directRegister}: any) {
     return function (target: any) {
         var ng1ModuleIds: Array<string> = [];
         var ng1RouterConfig;
@@ -16,8 +14,8 @@ export function NgModule({imports, declarations, providers, directRegister}: any
 
         target.ng1ShiftModuleName = `${target.name}-${counter("moduleName")}`;
 
-        if (target.name === "AppModule") {
-            target.ng1ShiftModuleName = target.name;
+        if (id === "app-module") {
+            target.ng1ShiftModuleName = id;
         }
 
         const ng1Module = angular.module(target.ng1ShiftModuleName, ng1ModuleIds);
