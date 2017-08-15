@@ -1,4 +1,5 @@
 import counter from "../../helpers/counter";
+import {Ng1ShiftServiceData} from "./interfaces";
 
 export function Injectable() {
     return function (target: any) {
@@ -11,7 +12,7 @@ export function Injectable() {
                 target.$inject = [];
             }
 
-            injections.forEach(({ ng1ServiceName }: any) => target.$inject.push(ng1ServiceName));
+            injections.forEach(({ ng1ServiceName }: Ng1ShiftServiceData) => target.$inject.push(ng1ServiceName));
         }
     };
 }

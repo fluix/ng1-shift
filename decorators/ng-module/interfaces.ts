@@ -18,7 +18,7 @@ interface NgModule {
     /**
      *  Has current module as parameter and allows to make a direct registration of any ng1 entity
      */
-    directRegister?: (ng1Module) => void
+    directRegister?: (ng1Module: any) => void
 }
 
 /**

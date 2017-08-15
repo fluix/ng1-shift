@@ -1,3 +1,5 @@
+import {Ng1ShiftServiceData} from "../../injectable/interfaces";
+
 export default function providerHandler(ng1Module: any, providers: any, declarations: any) {
 
     if (declarations) {
@@ -5,7 +7,7 @@ export default function providerHandler(ng1Module: any, providers: any, declarat
             const injections = Reflect.getMetadata("design:paramtypes", declaration);
 
             if (injections) {
-                const injectedServices = injections.map(({ ng1ServiceName }: any) => ng1ServiceName);
+                const injectedServices = injections.map(({ ng1ServiceName }: Ng1ShiftServiceData) => ng1ServiceName);
 
                 if (!declaration.$inject) {
                     declaration.$inject = [];
@@ -17,7 +19,7 @@ export default function providerHandler(ng1Module: any, providers: any, declarat
                     }
                 });
 
-                providers.forEach((provider: any) => {
+                providers.forEach((provider: Ng1ShiftServiceData) => {
                     const serviceToken = provider.ng1ServiceName;
                     const injectIndex = injectedServices.indexOf(serviceToken);
 
@@ -27,7 +29,7 @@ export default function providerHandler(ng1Module: any, providers: any, declarat
             }
         });
     } else {
-        providers.forEach((provider: any) => {
+        providers.forEach((provider: Ng1ShiftServiceData) => {
             const serviceToken = provider.ng1ServiceName;
 
             ng1Module.service(serviceToken, provider);
