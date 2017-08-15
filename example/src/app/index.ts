@@ -6,6 +6,7 @@ import {NgShiftModule} from "./module";
 import {NgShiftComponentModule} from "./component/index";
 import {NgShiftRouterTestModule} from "./router";
 import {NgShiftInjectableModule} from "./injectable";
+import {CoreModule} from "./core/index";
 
 @NgModule({
     id: "app-module",
@@ -13,6 +14,7 @@ import {NgShiftInjectableModule} from "./injectable";
         ...UIRouterModule,
         ...BrowserModule,
 
+        CoreModule,
         NgShiftModule,
         NgShiftComponentModule,
         NgShiftRouterTestModule,

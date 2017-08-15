@@ -1,5 +1,6 @@
-export * from './decorators/injectable';
-export * from './decorators/ng-module';
+export * from "./decorators/injectable";
+export * from "./decorators/ng-module";
+export * from "./helpers/di-tokens";
 
 interface IComponentClass extends Function {
     $inject?: Array<string>;
