@@ -9,15 +9,29 @@ import {Service1} from "./services/service1";
     template
 })
 export class InjectableComponent {
+
+    // NG1 BUILD TEST
+
+    // constructor(
+    //     private srv1: Service1,
+    //     private $q: Ng1ShiftQ,
+    //     private $timeout: Ng1ShiftTimeout
+    // ) {}
+    //
+    // testNestedDI() {
+    //     console.log(this.$q);
+    //     console.log(this.$timeout);
+    //     this.srv1.open();
+    // }
+
+
+    // NG2 BUILD TEST
+
     constructor(
-        private srv1: Service1,
-        private $q: Ng1ShiftQ,
-        private $timeout: Ng1ShiftTimeout
+        private srv1: Service1
     ) {}
 
     testNestedDI() {
-        console.log(this.$q);
-        console.log(this.$timeout);
         this.srv1.open();
     }
 }
