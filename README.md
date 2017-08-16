@@ -5,9 +5,219 @@ Library allows you to write with Angular 2 syntax on Angular 1.5+. That will mak
 ## How to install?
 `npm i -S ng1-shift`
 
+## NgModule
+Decorator for class, which allows to register any Angular 2 entity.
+
+##### Getting started:
+* Install `reflect-metadata` as a dependency in your project.
+* `NgModule` has `id` field which should marks name of top level component
+and should be used as `ng-app` name in your `index.html` file.
+
+```typescript
+@NgModule({
+    id: "app-module",
+    imports: [HomeModule],
+    declarations: [AppComponent],
+    providers: [AppService]
+})
+export class AppModule {}
+```
+
+Equals to:
+```typescript
+angular
+    .module("app-module", ["homeModuleName"])
+    .component("appComponentName", AppComponent)
+    .service("appServiceName", AppService);
+```
+
+##### Direct registration:
+`NgModule` has addition field `directRegister` with is represented by function with
+current Angular 1 module as argument.
+This field designed for gradually migration of your project in case if some entities
+is not ready for migration.
+
+```typescript
+@NgModule({
+    id: "app-module",
+    imports: [HomeModule],
+    directRegister: (ng1AppModule) => {
+        ng1AppModule.
+            .component("appComponentName", AppComponent)
+            .service("appServiceName", AppService);
+    }
+})
+export class AppModule {}
+```
+
+##### Version compatibility:
+`NgModule` `imports` field also can accept string which may represent Angular 1
+dependency e.g. `"ui-router"` or module.
+
+
+```typescript
+angular.module("child-module", []);
+
+@NgModule({
+    imports: [
+        "ui-router",
+        "child-module"
+    ]
+})
+export class ParentModule {}
+```
+
+Also if you need to tie Angular 2 module with Angular 1 it
+could be implemented by `ng1ShiftModuleName` property which is stored
+in your module.
+
+```typescript
+@NgModule({})
+export class ChildModule {}
+
+angular.module("parent-module", [ChildModule.ng1ShiftModuleName]);
+```
+
+
+## Dependency injection
+Implements Angular 2 DI design pattern.
+
+
+```typescript
+@NgModule({
+    declarations: [AppComponent],
+    providers: [AppService]
+})
+export class AppModule {}
+
+
+@Component({
+    selector: "component-name",
+    template: `<h1>Place your template here</h1>`,
+})
+export class AppComponent {
+
+    constructor(private appService: AppService) {
+    }
+}
+```
+
+Equals to:
+```typescript
+angular.module("app-module", [])
+    .component("appComponentName", AppComponent)
+    .service("appServiceName", AppService);
+
+export class AppComponent {
+
+    static $inject = ["appServiceName"]
+
+    constructor(private appService: IAppService) {
+    }
+}
+```
+
+##### Ng1Shift DI Tokens
+`Ng1Shift` provides a list of DI Tokens which can be used in a way of Angular 2 DI Tokens
+and allows you to get Angular 1 services.
+
+* Ng1ShiftQ
+* Ng1ShiftTransitions
+* Ng1ShiftTransition
+* Ng1ShiftStateProvider
+* Ng1ShiftStateParams
+* Ng1ShiftScope
+* Ng1ShiftRootScope
+* Ng1ShiftElement
+* Ng1ShiftWindow
+* Ng1ShiftLocation
+* Ng1ShiftTransclude
+* Ng1ShiftTimeout
+* Ng1ShiftDocument
+* Ng1ShiftCompile
+* Ng1ShiftController
+* Ng1ShiftAttrs
+* Ng1ShiftState
+* Ng1ShiftProvide
+* Ng1ShiftLocationProvider
+* Ng1ShiftHttpProvider
+* Ng1ShiftUrlMatcherFactoryProvider
+* Ng1ShiftSceDelegateProvider
+* Ng1ShiftUrlRouterProvider
+* Ng1ShiftHttp
+* Ng1ShiftInterval
+* Ng1ShiftSce
+
+
+```typescript
+@NgModule({
+    id: "app-module",
+    declarations: [AppComponent]
+})
+export class AppModule {}
+```
+
+```typescript
+import {Component, Ng1ShiftQ} from "ng1-shift";
+
+@Component({
+    selector: "component-name",
+    template: `<h1>Place your template here</h1>`,
+})
+export class AppComponent {
+
+    constructor(private $q: Ng1ShiftQ) {
+    }
+}
+```
+
+Equals to:
+
+```typescript
+angular
+    .module("app-module", [])
+    .component("appComponent", AppComponent)
+```
+
+```typescript
+export class AppComponent {
+    static $inject = ["$q"];
+
+    constructor(private $q: ng.IQService) {
+    }
+}
+```
+
+## Injectable
+Decorator for class, which allows to inject service into service.
+Note: it's required by each class of your app.
+
+```typescript
+import {Injectable, Ng1ShiftQ} from "ng1-shift";
+
+@Injectable()
+export class Service {
+
+    constructor(private $q: Ng1ShiftQ) {
+    }
+}
+```
+
+Equals to:
+
+```typescript
+export class Service {
+    static $inject = ["$q"];
+
+    constructor(private $q: ng.IQService) {
+    }
+}
+```
+
 ## Component
 Decorator for class, which links class to component contoller.
-It also passes property `template` as a static component value.
+It also passes property `template` as a static component value and `selector` as
+a component name.
 
 Lifecycle hooks:
 - **ngOnInit** - links to $onInit
@@ -19,6 +229,7 @@ import {Component, Inject, Input} from "ng1-shift";
 import {UserDeleteErrorEntity} from "../store/entity/user-delete-error";
 
 @Component({
+    selector: "component-name",
     template: `
         <h1>Place your template here</h1>
     `,
