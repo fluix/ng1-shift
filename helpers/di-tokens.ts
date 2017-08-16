@@ -5,79 +5,79 @@ function DiTokenFactory(config: any) {
 }
 
 @DiTokenFactory({id: "$q"})
-export class Ng1ShiftQ {}
+export class NgQ {}
 
 @DiTokenFactory({id: "$transitions"})
-export class Ng1ShiftTransitions {}
+export class NgTransitions {}
 
 @DiTokenFactory({id: "$transition$"})
-export class Ng1ShiftTransition {}
+export class NgTransition {}
 
 @DiTokenFactory({id: "$stateProvider"})
-export class Ng1ShiftStateProvider {}
+export class NgStateProvider {}
 
 @DiTokenFactory({id: "$stateParams"})
-export class Ng1ShiftStateParams {}
+export class NgStateParams {}
 
 @DiTokenFactory({id: "$scope"})
-export class Ng1ShiftScope {}
+export class NgScope {}
 
 @DiTokenFactory({id: "$rootScope"})
-export class Ng1ShiftRootScope {}
+export class NgRootScope {}
 
 @DiTokenFactory({id: "$element"})
-export class Ng1ShiftElement {}
+export class NgElement {}
 
 @DiTokenFactory({id: "$window"})
-export class Ng1ShiftWindow {}
+export class NgWindow {}
 
 @DiTokenFactory({id: "$location"})
-export class Ng1ShiftLocation {}
+export class NgLocation {}
 
 @DiTokenFactory({id: "$transclude"})
-export class Ng1ShiftTransclude {}
+export class NgTransclude {}
 
 @DiTokenFactory({id: "$timeout"})
-export class Ng1ShiftTimeout {}
+export class NgTimeout {}
 
 @DiTokenFactory({id: "$document"})
-export class Ng1ShiftDocument {}
+export class NgDocument {}
 
 @DiTokenFactory({id: "$compile"})
-export class Ng1ShiftCompile {}
+export class NgCompile {}
 
 @DiTokenFactory({id: "$controller"})
-export class Ng1ShiftController {}
+export class NgController {}
 
 @DiTokenFactory({id: "$attrs"})
-export class Ng1ShiftAttrs {}
+export class NgAttrs {}
 
 @DiTokenFactory({id: "$state"})
-export class Ng1ShiftState {}
+export class NgState {}
 
 @DiTokenFactory({id: "$provide"})
-export class Ng1ShiftProvide {}
+export class NgProvide {}
 
 @DiTokenFactory({id: "$locationProvider"})
-export class Ng1ShiftLocationProvider {}
+export class NgLocationProvider {}
 
 @DiTokenFactory({id: "$httpProvider"})
-export class Ng1ShiftHttpProvider {}
+export class NgHttpProvider {}
 
 @DiTokenFactory({id: "$urlMatcherFactoryProvider"})
-export class Ng1ShiftUrlMatcherFactoryProvider {}
+export class NgUrlMatcherFactoryProvider {}
 
 @DiTokenFactory({id: "$sceDelegateProvider"})
-export class Ng1ShiftSceDelegateProvider {}
+export class NgSceDelegateProvider {}
 
 @DiTokenFactory({id: "$urlRouterProvider"})
-export class Ng1ShiftUrlRouterProvider {}
+export class NgUrlRouterProvider {}
 
 @DiTokenFactory({id: "$http"})
-export class Ng1ShiftHttp {}
+export class NgHttp {}
 
 @DiTokenFactory({id: "$interval"})
-export class Ng1ShiftInterval {}
+export class NgInterval {}
 
 @DiTokenFactory({id: "$sce"})
-export class Ng1ShiftSce {}
+export class NgSce {}

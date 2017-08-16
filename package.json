@@ -40,7 +40,7 @@
   "dependencies": {
     "rollup": "0.41.6",
     "rollup-plugin-typescript": "0.8.1",
-    "typescript": "2.3.4"
+    "typescript": "2.4.2"
   },
   "devDependencies": {
     "@types/angular": "1.6.26",

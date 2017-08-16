@@ -1,5 +1,5 @@
 const {Injectable} = require("../../export-switch");
-import {Ng1ShiftTransitions, Ng1ShiftSce} from "../../../../../index";
+import {NgTransitions, NgSce} from "../../../../../index";
 import {Service5} from "./service5";
 
 @Injectable()
@@ -8,8 +8,8 @@ export class Service4 {
     // NG1 BUILD TEST
 
     // constructor(
-    //     private $transition: Ng1ShiftTransitions,
-    //     private $sce: Ng1ShiftSce,
+    //     private $transition: NgTransitions,
+    //     private $sce: NgSce,
     //     private srv5: Service5
     // ) {}
     //

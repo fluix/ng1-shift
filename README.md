@@ -121,32 +121,32 @@ export class AppComponent {
 `Ng1Shift` provides a list of DI Tokens which can be used in a way of Angular 2 DI Tokens
 and allows you to get Angular 1 services.
 
-* Ng1ShiftQ
-* Ng1ShiftTransitions
-* Ng1ShiftTransition
-* Ng1ShiftStateProvider
-* Ng1ShiftStateParams
-* Ng1ShiftScope
-* Ng1ShiftRootScope
-* Ng1ShiftElement
-* Ng1ShiftWindow
-* Ng1ShiftLocation
-* Ng1ShiftTransclude
-* Ng1ShiftTimeout
-* Ng1ShiftDocument
-* Ng1ShiftCompile
-* Ng1ShiftController
-* Ng1ShiftAttrs
-* Ng1ShiftState
-* Ng1ShiftProvide
-* Ng1ShiftLocationProvider
-* Ng1ShiftHttpProvider
-* Ng1ShiftUrlMatcherFactoryProvider
-* Ng1ShiftSceDelegateProvider
-* Ng1ShiftUrlRouterProvider
-* Ng1ShiftHttp
-* Ng1ShiftInterval
-* Ng1ShiftSce
+* NgQ
+* NgTransitions
+* NgTransition
+* NgStateProvider
+* NgStateParams
+* NgScope
+* NgRootScope
+* NgElement
+* NgWindow
+* NgLocation
+* NgTransclude
+* NgTimeout
+* NgDocument
+* NgCompile
+* NgController
+* NgAttrs
+* NgState
+* NgProvide
+* NgLocationProvider
+* NgHttpProvider
+* NgUrlMatcherFactoryProvider
+* NgSceDelegateProvider
+* NgUrlRouterProvider
+* NgHttp
+* NgInterval
+* NgSce
 
 
 ```typescript

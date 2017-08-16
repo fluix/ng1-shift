@@ -1,7 +1,7 @@
 const {Component} = require("../export-switch");
 const template = process.env.NG2 ? require("./templates/ng2.html") : require("./templates/ng1.html");
 
-import {Ng1ShiftQ, Ng1ShiftTimeout} from "../../../../index";
+import {NgQ, NgTimeout} from "../../../../index";
 import {Service1} from "./services/service1";
 
 @Component({
@@ -14,8 +14,8 @@ export class InjectableComponent {
 
     // constructor(
     //     private srv1: Service1,
-    //     private $q: Ng1ShiftQ,
-    //     private $timeout: Ng1ShiftTimeout
+    //     private $q: NgQ,
+    //     private $timeout: NgTimeout
     // ) {}
     //
     // testNestedDI() {
