@@ -29,15 +29,17 @@ export function Output(alias?: string): PropertyDecorator {
 
         const privateCallbackName = `__${property}`;
         const attrBinding = alias ? alias : property;
-        let callbackCache: Function;
-        let eventEmitterCache: EventEmitter;
 
         target.constructor.bindings[privateCallbackName] = `&${attrBinding}`;
 
         Object.defineProperty(target, privateCallbackName, {
             set: function (callback: Function) {
+                if (!this.__callbackCache) {
+                    this.__callbackCache = {};
+                }
+
                 if (typeof callback === "function") {
-                    callbackCache = callback;
+                    this.__callbackCache[property] = callback;
                 }
             },
             enumerable: false,
@@ -46,15 +48,21 @@ export function Output(alias?: string): PropertyDecorator {
 
         Object.defineProperty(target, property, {
             set: function (eventEmitterInstance) {
+                if (!this.__eventEmitterCache) {
+                    this.__eventEmitterCache = {};
+                }
+
                 if (eventEmitterInstance && eventEmitterInstance.subscribe) {
-                    eventEmitterInstance.subscribe(function (eventData: any) {
-                        callbackCache({$event: eventData});
+                    eventEmitterInstance.subscribe((eventData: any) => {
+                        if (typeof this.__callbackCache[property] === "function") {
+                            this.__callbackCache[property]({$event: eventData});
+                        }
                     });
-                    eventEmitterCache = eventEmitterInstance;
+                    this.__eventEmitterCache[property] = eventEmitterInstance;
                 }
             },
             get: function () {
-                return eventEmitterCache;
+                return this.__eventEmitterCache[property];
             },
             enumerable: true,
             configurable: true
