@@ -6,6 +6,7 @@ import {AppComponent} from "./component";
 import {NgShiftModule} from "./module";
 import {NgShiftComponentModule} from "./component/index";
 import {NgShiftRouterTestModule} from "./router";
+import {NgShiftDirectiveModule} from "./directive";
 
 @NgModule({
     id: "app-module",
@@ -15,7 +16,8 @@ import {NgShiftRouterTestModule} from "./router";
 
         NgShiftModule,
         NgShiftComponentModule,
-        NgShiftRouterTestModule
+        NgShiftRouterTestModule,
+        NgShiftDirectiveModule
     ],
     declarations: [ AppComponent ],
     bootstrap: [ AppComponent ]
