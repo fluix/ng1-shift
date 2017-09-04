@@ -1,3 +1,4 @@
+import "reflect-metadata";
 const {NgModule, BrowserModule, UIRouterModule} = require("./export-switch");
 
 import "reflect-metadata";
@@ -7,6 +8,8 @@ import {NgShiftModule} from "./module";
 import {NgShiftComponentModule} from "./component/index";
 import {NgShiftRouterTestModule} from "./router";
 import {NgShiftDirectiveModule} from "./directive";
+import {NgShiftInjectableModule} from "./injectable";
+import {CoreModule} from "./core/index";
 
 @NgModule({
     id: "app-module",
@@ -14,10 +17,12 @@ import {NgShiftDirectiveModule} from "./directive";
         ...UIRouterModule,
         ...BrowserModule,
 
+        CoreModule,
         NgShiftModule,
         NgShiftComponentModule,
         NgShiftRouterTestModule,
-        NgShiftDirectiveModule
+        NgShiftDirectiveModule,
+        NgShiftInjectableModule
     ],
     declarations: [ AppComponent ],
     bootstrap: [ AppComponent ]

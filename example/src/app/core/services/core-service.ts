@@ -1,8 +1,9 @@
 const {Injectable} = require("../../export-switch");
 
 @Injectable()
-export class Service1 {
+export class CoreService {
+
     open() {
-        console.log("hello from Service1");
+        console.log("hello from CoreService");
     }
 }
