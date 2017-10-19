@@ -1,4 +1,8 @@
-export * from './decorators/ng-module';
+import {DeclarationType} from "./models/declaration-type";
+import {Metakeys} from "./models/metakeys";
+
+export * from "./decorators/ng-module";
+export * from "./decorators/directive";
 
 interface IComponentClass extends Function {
     $inject?: Array<string>;
@@ -105,6 +109,8 @@ export function Component<IComponentClass>(config?: {selector?: string, template
 
         // Controller linking
         target.controller = target;
+
+        Reflect.defineMetadata(Metakeys.type, DeclarationType.component, target);
 
         return target;
     }

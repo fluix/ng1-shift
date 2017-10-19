@@ -5,6 +5,7 @@ import "reflect-metadata";
 import {AppComponent} from "./component";
 import {NgShiftModule} from "./module";
 import {NgShiftComponentModule} from "./component/index";
+import {NgShiftDirectiveModule} from "./directive/index";
 import {NgShiftRouterTestModule} from "./router";
 
 @NgModule({
@@ -15,6 +16,7 @@ import {NgShiftRouterTestModule} from "./router";
 
         NgShiftModule,
         NgShiftComponentModule,
+        NgShiftDirectiveModule,
         NgShiftRouterTestModule
     ],
     declarations: [ AppComponent ],
