@@ -1,3 +1,5 @@
+import "reflect-metadata";
+
 import {Directive} from "../index";
 
 @Directive({
@@ -55,11 +57,6 @@ describe("Component decorator", function() {
     test("should link `ngOnInit` to `$onInit`", function () {
         expect(instance.$onInit).toBeDefined();
         expect(instance.$onInit).toEqual(instance.ngOnInit);
-    });
-
-    test("should link `ngOnChanges` to `$onChanges`", function () {
-        expect(instance.$onChanges).toBeDefined();
-        expect(instance.$onChanges).toEqual(instance.ngOnChanges);
     });
 
     test("should link `ngOnDestroy` to `$onDestroy`", function () {
