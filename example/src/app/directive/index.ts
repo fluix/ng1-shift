@@ -1,6 +1,6 @@
 const {NgModule, CommonModule} = require("../export-switch");
 
-import {NgShiftDirective} from "./directive";
+import {NgShiftDirectiveComponent} from "./component";
 import {NgShiftAttrDirective} from "./attribute/directive";
 import {NgShiftElemDirective} from "./element/directive";
 import {NgShiftClassDirective} from "./class/directive";
@@ -8,11 +8,11 @@ import {NgShiftClassDirective} from "./class/directive";
 @NgModule({
     imports: [ ...CommonModule ],
     declarations: [
-        NgShiftDirective,
+        NgShiftDirectiveComponent,
         NgShiftAttrDirective,
         NgShiftElemDirective,
         NgShiftClassDirective
     ],
-    exports: [ NgShiftDirective ]
+    exports: [ NgShiftDirectiveComponent ]
 })
 export class NgShiftDirectiveModule {}

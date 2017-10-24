@@ -1,9 +1,15 @@
-const {Directive, Input} = require("../../export-switch");
+const {Directive, EventEmitter, Input, Output} = require("../../export-switch");
 
 @Directive({
-    selector: "[ngShiftAttrDirective]",
-    template: `<span>Attribute Directive ({{$ctrl.ngShiftDirectiveProp}})</span>`
+    selector: "[ng-shift-attr-directive]"
 })
 export class NgShiftAttrDirective {
     @Input() ngShiftDirectiveProp?: string;
+    @Output() ngShiftDirectiveOutput = new EventEmitter();
+
+    ngOnInit() {
+        console.log("NgShiftAttrDirective");
+
+        setTimeout(() => this.ngShiftDirectiveOutput.emit(), 1000);
+    }
 }
