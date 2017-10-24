@@ -37,5 +37,9 @@ module.exports = Object.assign({}, baseConfig, {
         ]
     },
 
+    devServer: {
+        port: 3001
+    },
+
     plugins
 });
