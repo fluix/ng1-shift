@@ -8,6 +8,8 @@ import {Directive} from "../index";
 })
 class Test {
     ngOnInit() {}
+    ngAfterViewInit() {}
+    ngOnChanges() {}
     ngOnDestroy() {}
 }
 
@@ -36,10 +38,6 @@ describe("Component decorator", function() {
         expect(instance.constructor.controller).toEqual(Test);
     });
 
-    test("should pass `template` to component", function () {
-        expect(instance.constructor.template).toBeDefined();
-    });
-
     test("should set `restrict` to A", function () {
         expect(instance.constructor.restrict).toEqual("A");
     });
@@ -57,6 +55,16 @@ describe("Component decorator", function() {
     test("should link `ngOnInit` to `$onInit`", function () {
         expect(instance.$onInit).toBeDefined();
         expect(instance.$onInit).toEqual(instance.ngOnInit);
+    });
+
+    test("should link `ngAfterViewInit` to `$postLink`", function () {
+        expect(instance.$postLink).toBeDefined();
+        expect(instance.$postLink).toEqual(instance.ngAfterViewInit);
+    });
+
+    test("should link `ngOnChanges` to `$onChanges`", function () {
+        expect(instance.$onChanges).toBeDefined();
+        expect(instance.$onChanges).toEqual(instance.ngOnChanges);
     });
 
     test("should link `ngOnDestroy` to `$onDestroy`", function () {
