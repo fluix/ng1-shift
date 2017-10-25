@@ -1,4 +1,4 @@
-import {Component} from "../index";
+import {Component} from "../core";
 
 @Component({
     template: `<div></div>`

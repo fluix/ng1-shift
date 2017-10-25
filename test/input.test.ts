@@ -1,4 +1,4 @@
-import {Input} from "../index";
+import {Input} from "../core";
 
 class Test {
     @Input("prop2") prop: string;
