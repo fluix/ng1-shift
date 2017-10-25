@@ -6,7 +6,6 @@ import {NgShiftElemDirective} from "./element/directive";
 import {NgShiftClassDirective} from "./class/directive";
 
 @NgModule({
-    imports: [ ...CommonModule ],
     declarations: [
         NgShiftDirectiveComponent,
         NgShiftAttrDirective,
