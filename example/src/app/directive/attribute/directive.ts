@@ -7,8 +7,12 @@ export class NgShiftAttrDirective {
     @Input() ngShiftDirectiveProp?: string;
     @Output() ngShiftDirectiveOutput = new EventEmitter();
 
+    ngAfterViewInit() {
+        console.log("ngAfterViewInit", this.ngShiftDirectiveProp);
+    }
+
     ngOnInit() {
-        console.log(this.constructor.name);
+        console.log(this.constructor.name, this.ngShiftDirectiveProp);
 
         setTimeout(() => this.ngShiftDirectiveOutput.emit(), 1000);
     }
