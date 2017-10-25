@@ -1,6 +1,6 @@
 import {NgModuleDecorator} from "./decorators/ng-module/interfaces";
 
-export {OnInit, OnChanges, OnDestroy, AfterViewInit} from "decorators/lifecycle_hooks";
+export * from "decorators/lifecycle_hooks";
 
 /**
  * NgModule decorator and metadata.
