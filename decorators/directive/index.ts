@@ -16,6 +16,10 @@ export function Directive<IComponentClass>({selector}: {
             target.prototype.$onInit = target.prototype.ngOnInit;
         }
 
+        if (target.prototype.ngOnChanges) {
+            target.prototype.$onChanges = target.prototype.ngOnChanges;
+        }
+
         if (target.prototype.ngOnDestroy) {
             target.prototype.$onDestroy = target.prototype.ngOnDestroy;
         }

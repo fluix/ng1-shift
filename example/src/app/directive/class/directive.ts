@@ -8,8 +8,12 @@ export class NgShiftClassDirective {
     @Output() ngShiftDirectiveOutput = new EventEmitter();
 
     ngOnInit() {
-        console.log("NgShiftClassDirective");
+        console.log(this.constructor.name);
 
         setTimeout(() => this.ngShiftDirectiveOutput.emit(), 1000);
+    }
+
+    ngOnChanges() {
+        console.log("onChanges", this.constructor.name);
     }
 }
