@@ -12,5 +12,5 @@ export default {
             typescript: ts
         })
     ],
-    external: ["reflect-metadata"]
+    external: ["reflect-metadata", "tslib"]
 }
