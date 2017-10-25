@@ -70,7 +70,7 @@ import {Directive} from "ng1-shift";
 @Directive({
     selector: `.ngClassDirective`,
 })
-export class PlaygroundComponent implements ng.IController {
+export class PlaygroundDirective implements ng.IController {
     ngOnInit() {
     }
 
