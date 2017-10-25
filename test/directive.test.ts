@@ -1,12 +1,14 @@
 import "reflect-metadata";
 
-import {Directive} from "../index";
+import {Directive, Input} from "../index";
 
 @Directive({
     selector: "[ng1Directive]",
     template: `<div></div>`
 })
 class Test {
+    @Input() testProp;
+
     ngOnInit() {}
     ngAfterViewInit() {}
     ngOnChanges() {}
@@ -55,6 +57,11 @@ describe("Component decorator", function() {
     test("should link `ngOnInit` to `$onInit`", function () {
         expect(instance.$onInit).toBeDefined();
         expect(instance.$onInit).toEqual(instance.ngOnInit);
+    });
+
+    test("should link `bindings` to `bindToController`", function () {
+        expect(instance.constructor.bindToController).toBeDefined();
+        expect(instance.constructor.bindToController).toEqual(instance.constructor.bindings);
     });
 
     test("should link `ngAfterViewInit` to `$postLink`", function () {
