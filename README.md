@@ -54,6 +54,61 @@ export class PlaygroundComponent implements ng.IController {
 ```
 
 
+## Directive
+Decorator for class, which links class to directive contoller.
+It also passes property `selector` as a directive selector.
+
+Lifecycle hooks:
+- **ngOnInit** - links to $onInit
+- **ngAfterViewInit** - links to $postLink
+- **ngOnChanges** - links to $onChanges
+- **ngOnDestroy** - links to $onDestroy
+
+```typescript
+import {Directive} from "ng1-shift";
+
+@Directive({
+    selector: `.ngClassDirective`,
+})
+export class PlaygroundComponent implements ng.IController {
+    ngOnInit() {
+    }
+
+    ngAfterViewInit() {
+    }
+
+    ngOnChanges() {
+    }
+
+    ngOnDestroy() {
+    }
+}
+```
+Equals to:
+```typescript
+export directiveInstance() {
+    return {
+        controller: PlaygroundDirective,
+        restrict: "C"
+    }
+}
+
+class PlaygroundDirective implements ng.IController {
+    $onInit() {
+    }
+
+    $postLink() {
+    }
+
+    $onChanges() {
+    }
+
+    $onDestroy() {
+    }
+}
+```
+
+
 ## Input
 Property decorator for bindings. Literary puts binding property name into static object `bindings` as one-way binding "<".
 
