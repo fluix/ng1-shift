@@ -1,4 +1,5 @@
-export * from './decorators/ng-module';
+export * from "./decorators/ng-module";
+export * from "./decorators/lifecycle_hooks";
 
 interface IComponentClass extends Function {
     $inject?: Array<string>;

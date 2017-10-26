@@ -1,5 +1,7 @@
 import {NgModuleDecorator} from "./decorators/ng-module/interfaces";
 
+export * from "decorators/lifecycle_hooks";
+
 /**
  * NgModule decorator and metadata.
  */
