@@ -95,6 +95,10 @@ export function Component<IComponentClass>(config?: {selector?: string, template
             target.prototype.$onInit = target.prototype.ngOnInit;
         }
 
+        if (target.prototype.ngAfterViewInit) {
+            target.prototype.$postLink = target.prototype.ngAfterViewInit;
+        }
+
         if (target.prototype.ngOnChanges) {
             target.prototype.$onChanges = target.prototype.ngOnChanges;
         }
