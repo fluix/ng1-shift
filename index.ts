@@ -3,6 +3,7 @@ import {Metakeys} from "./models/metakeys";
 
 export * from "./decorators/ng-module";
 export * from "./decorators/directive";
+export * from "./decorators/lifecycle_hooks";
 
 interface IComponentClass extends Function {
     $inject?: Array<string>;
@@ -97,6 +98,10 @@ export function Component<IComponentClass>(config?: {selector?: string, template
         // Lifecycle hooks aliases
         if (target.prototype.ngOnInit) {
             target.prototype.$onInit = target.prototype.ngOnInit;
+        }
+
+        if (target.prototype.ngAfterViewInit) {
+            target.prototype.$postLink = target.prototype.ngAfterViewInit;
         }
 
         if (target.prototype.ngOnChanges) {

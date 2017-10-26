@@ -7,6 +7,7 @@ import {Component} from "../index";
 })
 class Test {
     ngOnInit() {}
+    ngAfterViewInit() {}
     ngOnChanges() {}
     ngOnDestroy() {}
 }
@@ -29,6 +30,11 @@ describe("Component decorator", function() {
     test("should link `ngOnInit` to `$onInit`", function () {
         expect(instance.$onInit).toBeDefined();
         expect(instance.$onInit).toEqual(instance.ngOnInit);
+    });
+
+    test("should link `ngAfterViewInit` to `$postLink`", function () {
+        expect(instance.$postLink).toBeDefined();
+        expect(instance.$postLink).toEqual(instance.ngAfterViewInit);
     });
 
     test("should link `ngOnChanges` to `$onChanges`", function () {

@@ -1,6 +1,8 @@
 import {NgModuleDecorator} from "./decorators/ng-module/interfaces";
 import {DirectiveDecorator} from "./decorators/directive/interfaces";
 
+export * from "decorators/lifecycle_hooks";
+
 /**
  * NgModule decorator and metadata.
  */
