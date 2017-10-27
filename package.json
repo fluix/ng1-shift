@@ -1,13 +1,9 @@
 {
   "name": "ng1-shift",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Angular 1.5+ decorators for writing Angular2 like.",
-  "main": "dist/index.js",
   "scripts": {
-    "test": "jest --watchAll",
-    "postinstall": "npm run build",
-    "build": "rollup -c rollup.config.js",
-    "build:watch": "rollup -c rollup.config.js -w"
+    "test": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -38,8 +34,6 @@
     ]
   },
   "dependencies": {
-    "rollup": "0.41.6",
-    "rollup-plugin-typescript": "0.8.1",
     "typescript": "2.3.4"
   },
   "devDependencies": {
@@ -47,7 +41,6 @@
     "@types/jest": "19.2.4",
     "jest": "20.0.4",
     "reflect-metadata": "0.1.10",
-    "rollup-watch": "3.2.2",
     "ts-jest": "20.0.5",
     "tslib": "1.7.1"
   }
