@@ -31,7 +31,8 @@ export function Directive<IComponentClass>({selector}: {
         // Controller linking
         target.restrict = getRestrictFromSelector(target.selector);
         target.controller = target;
-        target.controllerAs = target.controllerAs ? target.controllerAs : target.name;
+        // IE11 doesn't support function.name
+        target.controllerAs = target.controllerAs || target.name || target.selector;
         target.bindToController = target.bindings ? target.bindings : {};
 
         // always isolated scope, unless set other
