@@ -33,15 +33,13 @@
       "js"
     ]
   },
-  "dependencies": {
-    "typescript": "2.3.4"
-  },
   "devDependencies": {
-    "@types/angular": "1.6.26",
-    "@types/jest": "19.2.4",
-    "jest": "20.0.4",
+    "typescript": "2.5.3",
+    "@types/angular": "1.6.36",
+    "@types/jest": "21.1.5",
+    "jest": "21.2.1",
     "reflect-metadata": "0.1.10",
-    "ts-jest": "20.0.5",
-    "tslib": "1.7.1"
+    "ts-jest": "21.1.4",
+    "tslib": "1.8.0"
   }
 }
