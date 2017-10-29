@@ -41,5 +41,5 @@ export function Directive<IComponentClass>({selector}: {
         Reflect.defineMetadata(Metakeys.type, DeclarationType.directive, target);
 
         return target;
-    }
+    };
 }
