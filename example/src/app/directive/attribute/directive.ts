@@ -6,12 +6,13 @@ const {Directive, EventEmitter, Input, Output} = require("../../export-switch");
 export class NgShiftAttrDirective {
     @Input() ngShiftDirectiveProp?: string;
     @Output() ngShiftDirectiveOutput = new EventEmitter();
+    private name = "NgShiftAttrDirective";
 
     ngOnInit() {
-        console.log(this.constructor.name, this.ngShiftDirectiveProp);
+        console.log(this.name, this.ngShiftDirectiveProp);
 
         const titleSpan = document.createElement("span");
-        titleSpan.textContent = this.constructor.name;
+        titleSpan.textContent = this.name;
 
         document.querySelector("ng-shift-directive > div").appendChild(titleSpan);
 
@@ -23,6 +24,6 @@ export class NgShiftAttrDirective {
     }
 
     ngOnChanges() {
-        console.log("onChanges", this.constructor.name);
+        console.log("onChanges", this.name);
     }
 }
