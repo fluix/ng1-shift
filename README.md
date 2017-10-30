@@ -1,5 +1,7 @@
 # ng1-shift
 
+[![bitHound Overall Score](https://www.bithound.io/github/readdle/ng1-shift/badges/score.svg)](https://www.bithound.io/github/readdle/ng1-shift)
+
 Library allows you to write with Angular 2 syntax on Angular 1.5+. That will make your migration to Angular 2(or 4) more easier.
 
 ## How to install?
