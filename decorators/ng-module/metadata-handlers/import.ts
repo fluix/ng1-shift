@@ -30,5 +30,5 @@ export default function importHandler(imports: Array<ng1Module>) {
     return {
         ng1ModuleIds,
         ng1RouterConfig
-    }
+    };
 }
