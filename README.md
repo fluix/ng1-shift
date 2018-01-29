@@ -130,6 +130,27 @@ class DogComponent {
 }
 ```
 
+In order to setup two-way binding, you should add `@Input` for that property and `@Output` with 'Change' postfix property.
+```typescript
+class DogComponent {
+    @Input() name: string;
+    @Output() nameChange = new EventEmitter();
+}
+```
+Equals to:
+```typescript
+class DogComponent {
+    static bindings = {
+        name: "=",
+        nameChange: "&"
+    };
+
+    name: string;
+    nameChange: Function;
+}
+
+```
+
 
 ## Output
 Property decorator for callback bindings. Literary puts binding property name into static object `bindings` as callback binding "&".
