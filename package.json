@@ -1,6 +1,6 @@
 {
   "name": "ng1-shift",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Angular 1.5+ decorators for writing Angular2 like.",
   "scripts": {
     "test": "jest --watchAll",
