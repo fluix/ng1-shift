@@ -45,12 +45,12 @@ describe("Component decorator", function() {
     });
 
     test("should set `restrict` to E", function () {
-        let instance2 = new TestElement();
+        const instance2 = new TestElement();
         expect(instance2.constructor.restrict).toEqual("E");
     });
 
     test("should set `restrict` to C", function () {
-        let instance2 = new TestClass();
+        const instance2 = new TestClass();
         expect(instance2.constructor.restrict).toEqual("C");
     });
 

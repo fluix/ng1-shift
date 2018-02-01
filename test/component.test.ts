@@ -1,11 +1,14 @@
 import "reflect-metadata";
 
-import {Component} from "../index";
+import {Component, Input, Output} from "../index";
 
 @Component({
     template: `<div></div>`
 })
 class Test {
+    @Input() prop: string;
+    @Output() propChange: string;
+
     ngOnInit() {}
     ngAfterViewInit() {}
     ngOnChanges() {}
@@ -37,13 +40,18 @@ describe("Component decorator", function() {
         expect(instance.$postLink).toEqual(instance.ngAfterViewInit);
     });
 
+    test("should link `ngOnDestroy` to `$onDestroy`", function () {
+        expect(instance.$onDestroy).toBeDefined();
+        expect(instance.$onDestroy).toEqual(instance.ngOnDestroy);
+    });
+
     test("should link `ngOnChanges` to `$onChanges`", function () {
         expect(instance.$onChanges).toBeDefined();
         expect(instance.$onChanges).toEqual(instance.ngOnChanges);
     });
 
-    test("should link `ngOnDestroy` to `$onDestroy`", function () {
-        expect(instance.$onDestroy).toBeDefined();
-        expect(instance.$onDestroy).toEqual(instance.ngOnDestroy);
+    test("should add two-way binding", function () {
+        expect(instance.constructor.bindings).toBeDefined();
+        expect(instance.constructor.bindings.prop).toEqual("=prop");
     });
 });
