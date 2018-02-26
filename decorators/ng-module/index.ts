@@ -1,15 +1,19 @@
 import importHandler from "./metadata-handlers/import";
 import daclarationHandler from "./metadata-handlers/declaration";
 import providerHandler from "./metadata-handlers/provider";
-import counter from '../../helpers/counter';
+import counter from "../../helpers/counter";
 
 export function NgModule({id, imports, declarations, providers, directRegister}: any) {
     return function (target: any) {
-        var ng1ModuleIds: Array<string> = [];
-        var ng1RouterConfig;
+        let ng1ModuleIds: Array<string> = [];
+        let ng1RouterConfig;
 
-        if (imports && imports.length) {
-            var {ng1ModuleIds, ng1RouterConfig} = importHandler(imports);
+        const hasImports = imports && imports.length;
+
+        if (hasImports) {
+            const handledImports = importHandler(imports);
+            ng1ModuleIds = handledImports.ng1ModuleIds;
+            ng1RouterConfig = handledImports.ng1RouterConfig;
         }
 
         target.ng1ShiftModuleName = `${target.name}-${counter("moduleName")}`;
@@ -35,5 +39,5 @@ export function NgModule({id, imports, declarations, providers, directRegister}:
         if (directRegister) {
             directRegister(ng1Module);
         }
-    }
+    };
 }

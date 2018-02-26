@@ -6,6 +6,7 @@ import "reflect-metadata";
 import {AppComponent} from "./component";
 import {NgShiftModule} from "./module";
 import {NgShiftComponentModule} from "./component/index";
+import {NgShiftDirectiveModule} from "./directive/index";
 import {NgShiftRouterTestModule} from "./router";
 import {NgShiftInjectableModule} from "./injectable";
 import {CoreModule} from "./core/index";
@@ -19,6 +20,7 @@ import {CoreModule} from "./core/index";
         CoreModule,
         NgShiftModule,
         NgShiftComponentModule,
+        NgShiftDirectiveModule,
         NgShiftRouterTestModule,
         NgShiftInjectableModule
     ],

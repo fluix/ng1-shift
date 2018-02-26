@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import {EventEmitter, Output} from "../index";
 
 class TestWithOneOutput {

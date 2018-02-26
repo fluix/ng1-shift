@@ -1,5 +1,8 @@
-import {NgModuleDecorator} from "./decorators/ng-module/interfaces";
+import {DirectiveDecorator} from "./decorators/directive/interfaces";
 import {Injectable} from "./decorators/injectable/interfaces";
+import {NgModuleDecorator} from "./decorators/ng-module/interfaces";
+
+export * from "decorators/lifecycle_hooks";
 
 /**
  * NgModule decorator and metadata.
@@ -10,6 +13,11 @@ export declare const NgModule: NgModuleDecorator;
  * Injectable decorator.
  */
 export declare const Injectable: Injectable;
+
+/**
+ * Directive decorator and metadata.
+ */
+export declare const Directive: DirectiveDecorator;
 
 export interface Component {
     /**

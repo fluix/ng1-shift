@@ -21,6 +21,10 @@ module.exports = Object.assign({}, baseConfig, {
         exprContextCritical: false
     },
 
+    devServer: {
+        port: 3000
+    },
+
     plugins: [
         new HtmlWebpackPlugin({
             template: "./index.ejs",

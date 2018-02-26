@@ -1,10 +1,16 @@
-import {Component} from "../index";
+import "reflect-metadata";
+
+import {Component, Input, Output} from "../index";
 
 @Component({
     template: `<div></div>`
 })
 class Test {
+    @Input() prop: string;
+    @Output() propChange: string;
+
     ngOnInit() {}
+    ngAfterViewInit() {}
     ngOnChanges() {}
     ngOnDestroy() {}
 }
@@ -29,13 +35,23 @@ describe("Component decorator", function() {
         expect(instance.$onInit).toEqual(instance.ngOnInit);
     });
 
-    test("should link `ngOnChanges` to `$onChanges`", function () {
-        expect(instance.$onChanges).toBeDefined();
-        expect(instance.$onChanges).toEqual(instance.ngOnChanges);
+    test("should link `ngAfterViewInit` to `$postLink`", function () {
+        expect(instance.$postLink).toBeDefined();
+        expect(instance.$postLink).toEqual(instance.ngAfterViewInit);
     });
 
     test("should link `ngOnDestroy` to `$onDestroy`", function () {
         expect(instance.$onDestroy).toBeDefined();
         expect(instance.$onDestroy).toEqual(instance.ngOnDestroy);
+    });
+
+    test("should link `ngOnChanges` to `$onChanges`", function () {
+        expect(instance.$onChanges).toBeDefined();
+        expect(instance.$onChanges).toEqual(instance.ngOnChanges);
+    });
+
+    test("should add two-way binding", function () {
+        expect(instance.constructor.bindings).toBeDefined();
+        expect(instance.constructor.bindings.prop).toEqual("=prop");
     });
 });
