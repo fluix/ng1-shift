@@ -1,5 +1,7 @@
 # ng1-shift
 
+[![bitHound Overall Score](https://www.bithound.io/github/readdle/ng1-shift/badges/score.svg)](https://www.bithound.io/github/readdle/ng1-shift)
+
 Library allows you to write with Angular 2 syntax on Angular 1.5+. That will make your migration to Angular 2(or 4) more easier.
 
 ## How to install?
@@ -54,6 +56,61 @@ export class PlaygroundComponent implements ng.IController {
 ```
 
 
+## Directive
+Decorator for class, which links class to directive contoller.
+It also passes property `selector` as a directive selector.
+
+Lifecycle hooks:
+- **ngOnInit** - links to $onInit
+- **ngAfterViewInit** - links to $postLink
+- **ngOnChanges** - links to $onChanges
+- **ngOnDestroy** - links to $onDestroy
+
+```typescript
+import {Directive} from "ng1-shift";
+
+@Directive({
+    selector: `.ngClassDirective`,
+})
+export class PlaygroundDirective implements ng.IController {
+    ngOnInit() {
+    }
+
+    ngAfterViewInit() {
+    }
+
+    ngOnChanges() {
+    }
+
+    ngOnDestroy() {
+    }
+}
+```
+Equals to:
+```typescript
+export directiveInstance() {
+    return {
+        controller: PlaygroundDirective,
+        restrict: "C"
+    }
+}
+
+class PlaygroundDirective implements ng.IController {
+    $onInit() {
+    }
+
+    $postLink() {
+    }
+
+    $onChanges() {
+    }
+
+    $onDestroy() {
+    }
+}
+```
+
+
 ## Input
 Property decorator for bindings. Literary puts binding property name into static object `bindings` as one-way binding "<".
 
@@ -71,6 +128,27 @@ class DogComponent {
 
     name: string;
 }
+```
+
+In order to setup two-way binding, you should add `@Input` for that property and `@Output` with 'Change' postfix property.
+```typescript
+class DogComponent {
+    @Input() name: string;
+    @Output() nameChange = new EventEmitter();
+}
+```
+Equals to:
+```typescript
+class DogComponent {
+    static bindings = {
+        name: "=",
+        nameChange: "&"
+    };
+
+    name: string;
+    nameChange: Function;
+}
+
 ```
 
 

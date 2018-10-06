@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import {Input} from "../core";
 
 class Test {

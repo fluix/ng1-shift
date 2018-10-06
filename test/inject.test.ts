@@ -4,7 +4,7 @@ class Test {
     constructor(
         @Inject("service") service: Function,
         @Inject("service2") service2: Function
-    ) {};
+    ) {}
 }
 
 describe("Inject decorator", function() {

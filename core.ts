@@ -1,26 +1,30 @@
-export * from './decorators/ng-module';
+import {ComponentMetadataService} from "./decorators/component/metadata.service";
+import {IComponentClass} from "./decorators/component/interfaces";
 
-interface IComponentClass extends Function {
-    $inject?: Array<string>;
-    bindings?: {[key: string]: string};
-    controller: Object;
-    template: string;
-
-    constructor: IComponentClass;
-}
+export * from "./decorators/ng-module";
+export * from "./decorators/component";
+export * from "./decorators/directive";
+export * from "./decorators/lifecycle_hooks";
 
 export function Input(alias?: string): PropertyDecorator {
     return function (target: IComponentClass, property: string) {
+        const componentMetadata = new ComponentMetadataService(target.constructor);
+
         if (!target.constructor.bindings) {
             target.constructor.bindings = {};
         }
 
-        target.constructor.bindings[property] = "<" + (alias ? alias : "");
+        const attrBinding = alias ? alias : property;
+
+        target.constructor.bindings[property] = "<" + attrBinding;
+        componentMetadata.addInput(property, attrBinding);
     };
 }
 
 export function Output(alias?: string): PropertyDecorator {
     return function (target: IComponentClass, property: string) {
+        const componentMetadata = new ComponentMetadataService(target.constructor);
+
         if (!target.constructor.bindings) {
             target.constructor.bindings = {};
         }
@@ -29,6 +33,7 @@ export function Output(alias?: string): PropertyDecorator {
         const attrBinding = alias ? alias : property;
 
         target.constructor.bindings[privateCallbackName] = `&${attrBinding}`;
+        componentMetadata.addOutput(property, attrBinding);
 
         Object.defineProperty(target, privateCallbackName, {
             set: function (callback: Function) {
@@ -76,38 +81,6 @@ export function Inject(dependencyName: string): ParameterDecorator {
 
         target.$inject[parameterIndex] = dependencyName;
     };
-}
-
-export function Component<IComponentClass>(config?: {selector?: string, template?: string}): ClassDecorator {
-    return function (target: any) {
-        if (config) {
-            if (config.template) {
-                target.template = config.template;
-            }
-
-            if (config.selector) {
-                target.selector = config.selector;
-            }
-        }
-
-        // Lifecycle hooks aliases
-        if (target.prototype.ngOnInit) {
-            target.prototype.$onInit = target.prototype.ngOnInit;
-        }
-
-        if (target.prototype.ngOnChanges) {
-            target.prototype.$onChanges = target.prototype.ngOnChanges;
-        }
-
-        if (target.prototype.ngOnDestroy) {
-            target.prototype.$onDestroy = target.prototype.ngOnDestroy;
-        }
-
-        // Controller linking
-        target.controller = target;
-
-        return target;
-    }
 }
 
 export class EventEmitter {
