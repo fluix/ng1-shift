@@ -5,7 +5,7 @@
 Library allows you to write with Angular 2 syntax on Angular 1.5+. That will make your migration to Angular 2(or 4) more easier.
 
 ## How to install?
-`npm i -S ng1-shift`
+`npm i ng1-shift`
 
 ## Component
 Decorator for class, which links class to component contoller.
@@ -17,7 +17,7 @@ Lifecycle hooks:
 - **ngOnDestroy** - links to $onDestroy
 
 ```typescript
-import {Component, Inject, Input} from "ng1-shift";
+import {Component, Inject, Input} from "ng1-shift/core";
 import {UserDeleteErrorEntity} from "../store/entity/user-delete-error";
 
 @Component({
@@ -67,7 +67,7 @@ Lifecycle hooks:
 - **ngOnDestroy** - links to $onDestroy
 
 ```typescript
-import {Directive} from "ng1-shift";
+import {Directive} from "ng1-shift/core";
 
 @Directive({
     selector: `.ngClassDirective`,

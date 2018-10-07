@@ -4,7 +4,8 @@
   "main": "main.ts",
   "scripts": {
     "dev:ng1": "webpack-dev-server --config config/webpack.ng1.config.js",
-    "dev:ng2": "webpack-dev-server --config config/webpack.ng2.config.js"
+    "dev:ng2": "webpack-dev-server --config config/webpack.ng2.config.js",
+    "postinstall": "sh link-ng1shift.sh"
   },
   "repository": {
     "type": "git",
