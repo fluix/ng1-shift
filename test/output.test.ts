@@ -2,12 +2,12 @@ import "reflect-metadata";
 import {EventEmitter, Output} from "../core";
 
 class TestWithOneOutput {
-    @Output("onAliasCallback") onCallback: Function;
+    @Output("onAliasCallback") onCallback!: Function;
 }
 
 class TestWithManyOutputs {
-    @Output("cb1") callback1: Function;
-    @Output("cb2") callback2: Function;
+    @Output("cb1") callback1!: Function;
+    @Output("cb2") callback2!: Function;
 }
 
 describe("Output decorator", function() {

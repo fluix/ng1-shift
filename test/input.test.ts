@@ -2,7 +2,7 @@ import "reflect-metadata";
 import {Input} from "../core";
 
 class Test {
-    @Input("prop2") prop: string;
+    @Input("prop2") prop!: string;
 }
 
 describe("Input decorator", function() {

@@ -1,13 +1,12 @@
 import "reflect-metadata";
-
-import {Directive, Input} from "../index";
+import {Input} from "../core";
+import {Directive} from "../decorators/directive";
 
 @Directive({
     selector: "[ng1Directive]",
-    template: `<div></div>`
 })
 class Test {
-    @Input() testProp;
+    @Input() testProp: any;
 
     ngOnInit() {}
     ngAfterViewInit() {}
@@ -17,14 +16,12 @@ class Test {
 
 @Directive({
     selector: ".ng1Directive",
-    template: `<div></div>`
 })
 class TestClass {
 }
 
 @Directive({
     selector: "ng1Directive",
-    template: `<div></div>`
 })
 class TestElement {
 }
@@ -45,12 +42,12 @@ describe("Component decorator", function() {
     });
 
     test("should set `restrict` to E", function () {
-        const instance2 = new TestElement();
+        const instance2 = new TestElement() as any;
         expect(instance2.constructor.restrict).toEqual("E");
     });
 
     test("should set `restrict` to C", function () {
-        const instance2 = new TestClass();
+        const instance2 = new TestClass() as any;
         expect(instance2.constructor.restrict).toEqual("C");
     });
 

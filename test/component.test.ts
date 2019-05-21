@@ -5,8 +5,8 @@ import {Component, Input, Output} from "../core";
     template: `<div></div>`
 })
 class Test {
-    @Input() prop: string;
-    @Output() propChange: string;
+    @Input() prop!: string;
+    @Output() propChange!: string;
 
     ngOnInit() {}
     ngAfterViewInit() {}
