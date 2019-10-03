@@ -1,11 +1,11 @@
-export class EventEmitter {
-    private listeners: Array<Function> = [];
+export class EventEmitter<T extends any = any> {
+    private listeners: Array<(arg: T) => void> = [];
 
-    emit(event: any = null) {
+    emit(event: T | null = null) {
         this.listeners.forEach(callback => callback.call(null, event));
     }
 
-    subscribe(callback: Function) {
+    subscribe(callback: (arg: T) => void) {
         this.listeners.push(callback);
     }
 }
