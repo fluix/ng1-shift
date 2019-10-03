@@ -1,6 +1,5 @@
 import "reflect-metadata";
-import {EventEmitter} from "../decorators/event_emitter";
-import {Output} from "../decorators/output";
+import {EventEmitter, Output} from "../core";
 
 class TestWithOneOutput {
     @Output("onAliasCallback") onCallback: Function;
@@ -11,11 +10,11 @@ class TestWithManyOutputs {
     @Output("cb2") callback2: Function;
 }
 
-describe("Output decorator", function() {
+describe("Output decorator", function () {
     let testOneOutput: any,
         testManyOutputs: any;
 
-    beforeEach(function() {
+    beforeEach(function () {
         testOneOutput = new TestWithOneOutput();
         testManyOutputs = new TestWithManyOutputs();
     });
