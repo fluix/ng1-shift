@@ -1,4 +1,4 @@
-import {Inject} from "../core";
+import {Inject} from "../decorators/inject";
 
 class Test {
     constructor(
