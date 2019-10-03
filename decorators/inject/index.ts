@@ -1,7 +1,5 @@
-import {IComponentClass} from "../component/interfaces";
-
 export function Inject(dependencyName: string): ParameterDecorator {
-    return function (target: IComponentClass, property: string, parameterIndex: number) {
+    return function (target: any, property: string | symbol, parameterIndex: number) {
         if (!target.$inject) {
             target.$inject = [];
         }
