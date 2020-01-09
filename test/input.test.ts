@@ -5,7 +5,7 @@ class Test {
     @Input("prop2") prop: string;
 }
 
-describe("Input decorator", function() {
+describe("input decorator", function() {
     let instance: any;
 
     beforeEach(function() {

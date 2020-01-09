@@ -10,11 +10,11 @@ class TestWithManyOutputs {
     @Output("cb2") callback2: Function;
 }
 
-describe("Output decorator", function() {
+describe("Output decorator", function () {
     let testOneOutput: any,
         testManyOutputs: any;
 
-    beforeEach(function() {
+    beforeEach(function () {
         testOneOutput = new TestWithOneOutput();
         testManyOutputs = new TestWithManyOutputs();
     });

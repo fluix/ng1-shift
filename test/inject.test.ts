@@ -4,14 +4,17 @@ class Test {
     constructor(
         @Inject("service") service: Function,
         @Inject("service2") service2: Function
-    ) {}
+    ) {
+    }
 }
 
-describe("Inject decorator", function() {
+describe("Inject decorator", function () {
     let instance: any;
 
-    beforeEach(function() {
-        instance = new Test(() => {}, () => {});
+    beforeEach(function () {
+        instance = new Test(() => {
+        }, () => {
+        });
     });
 
     test("should create $inject", function () {
