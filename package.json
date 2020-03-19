@@ -2,11 +2,11 @@
   "name": "ng1-shift",
   "version": "0.0.12",
   "description": "Angular 1.5+ decorators for writing Angular2 like.",
-  "types": "./dist/types/index.d.ts",
   "files": [
     "dist"
   ],
   "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "prepack": "npm run build",
     "build": "rimraf dist && rollup -c",
@@ -42,9 +42,13 @@
       "js"
     ]
   },
+  "dependencies": {
+    "reflect-metadata": "^0.1.13"
+  },
   "peerDependencies": {
     "angular": "^1.5.0",
-    "reflect-metadata": "^0.1.13"
+    "typescript": "^3.8.3",
+    "tslib": "^1.11.1"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^4.0.0",
@@ -54,7 +58,6 @@
     "fsevents": "^2.1.2",
     "jest": "^23.6.0",
     "onchange": "^5.0.2",
-    "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rollup": "^2.1.0",
     "rollup-plugin-commonjs": "^10.1.0",

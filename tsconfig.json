@@ -4,7 +4,7 @@
     "module": "es2015",
     "target": "es5",
     "declaration": true,
-    "declarationDir": "dist/types",
+    "declarationDir": "dist",
     "sourceMap": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
