@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import {Input} from "../core";
+import {Input} from "../src/core";
 
 class Test {
     @Input("prop2") prop: string;

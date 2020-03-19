@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import {Component, Input, Output} from "../core";
+import {Component, Input, Output} from "../src/core";
 
 @Component({
     template: `<div></div>`

@@ -19,7 +19,7 @@ interface ComponentMetadata {
 export class ComponentMetadataService {
     constructor(private target: IComponentClass) {}
 
-    addInput(componentProp: string, inputName?: string) {
+    addInput(componentProp: string, inputName: string) {
         const options = this.metadata;
 
         options.inputs.push({componentProp, inputName});
@@ -27,7 +27,7 @@ export class ComponentMetadataService {
         this.metadata = options;
     }
 
-    addOutput(componentProp: string, outputName?: string) {
+    addOutput(componentProp: string, outputName: string) {
         const options = this.metadata;
 
         options.outputs.push({componentProp, outputName});
