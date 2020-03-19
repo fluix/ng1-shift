@@ -22,6 +22,7 @@ export function NgModule({id, imports, declarations, providers, directRegister}:
             target.ng1ShiftModuleName = id;
         }
 
+        // @ts-ignore
         const ng1Module = angular.module(target.ng1ShiftModuleName, ng1ModuleIds);
 
         if (ng1RouterConfig) {

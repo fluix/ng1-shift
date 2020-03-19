@@ -4,8 +4,7 @@
   "main": "main.ts",
   "scripts": {
     "dev:ng1": "webpack-dev-server --config config/webpack.ng1.config.js",
-    "dev:ng2": "webpack-dev-server --config config/webpack.ng2.config.js",
-    "postinstall": "sh link-ng1shift.sh"
+    "dev:ng2": "webpack-dev-server --config config/webpack.ng2.config.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +24,8 @@
     "url": "https://github.com/readdle/ng1-shift/issues"
   },
   "homepage": "https://github.com/readdle/ng1-shift#readme",
-  "devDependencies": {
+  "dependencies": {
+    "ng1-shift": "../",
     "@angular/common": "4.4.6",
     "@angular/compiler": "4.4.6",
     "@angular/compiler-cli": "4.4.6",
@@ -38,7 +38,7 @@
     "@angular/router": "4.4.6",
     "@types/core-js": "0.9.43",
     "@types/node": "9.4.0",
-    "angular": "1.6.8",
+    "angular": "^1.6.8",
     "angular-router-loader": "0.6.0",
     "angular-ui-router": "1.0.0-alpha.5",
     "core-js": "2.5.1",

@@ -1,16 +1,26 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "moduleResolution": "node",
+    "module": "es2015",
     "target": "es5",
+    "declaration": true,
+    "declarationDir": "dist",
+    "sourceMap": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "preserveConstEnums": true,
     "importHelpers": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "strict": true
+    "strict": true,
+    "types": [
+      "reflect-metadata",
+      "@types/angular",
+      "@types/node"
+    ]
   },
-  "include": [
-    "test/*.ts"
+  "exclude": [
+    "example",
+    "test"
   ]
 }

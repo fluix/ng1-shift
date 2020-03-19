@@ -11,7 +11,7 @@ export function replaceTwoWayBindings(target: IComponentClass) {
             const requiredOutput = `${input.inputName}Change`;
             const hasOutput = outputs.some(output => output.outputName === requiredOutput);
 
-            if (hasOutput) {
+            if (hasOutput && target.bindings) {
                 target.bindings[input.componentProp] = target.bindings[input.componentProp].replace(/^</, "=");
             }
         });
