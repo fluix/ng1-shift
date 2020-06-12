@@ -73,13 +73,21 @@ export function Output(alias?: string): PropertyDecorator {
     };
 }
 
-export function Inject(dependencyName: string): ParameterDecorator {
+interface Ng1ShiftInjectableObject {
+    $injectionToken: string;
+}
+
+export function Inject(dependencyName: string | Ng1ShiftInjectableObject): ParameterDecorator {
     return function (target: any, property: string | symbol, parameterIndex: number) {
         if (!target.$inject) {
             target.$inject = [];
         }
 
-        target.$inject[parameterIndex] = dependencyName;
+        const injectionToken = typeof dependencyName === "string"
+            ? dependencyName
+            : dependencyName.$injectionToken;
+
+        target.$inject[parameterIndex] = injectionToken;
     };
 }
 
