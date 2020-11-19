@@ -1,4 +1,4 @@
-import {Inject} from "../src/core";
+import {Inject} from "../src";
 
 class Test {
     constructor(
