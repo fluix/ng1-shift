@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import {EventEmitter, Output} from "../src/core";
+import {EventEmitter, Output} from "../src";
 
 class TestWithOneOutput {
     @Output("onAliasCallback") onCallback: Function;
