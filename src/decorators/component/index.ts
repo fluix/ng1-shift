@@ -2,7 +2,13 @@ import {DeclarationType} from "../../models/declaration-type";
 import {Metakeys} from "../../models/metakeys";
 import {replaceTwoWayBindings} from "./helpers";
 
-export function Component(config?: {selector?: string, template?: string}): ClassDecorator {
+interface ComponentConfig {
+    selector?: string;
+    template?: string;
+    styles?: Array<any>; // added for compatibility with Angular12 with ngUpgrade
+}
+
+export function Component(config?: ComponentConfig): ClassDecorator {
     return function (target: any) {
         if (config) {
             if (config.template) {
