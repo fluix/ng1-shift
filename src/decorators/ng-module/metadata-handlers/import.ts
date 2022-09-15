@@ -1,6 +1,21 @@
 import {findFirst} from "../../../helpers/array";
+import {isClass} from "../../../helpers/is-class";
 
 type ng1Module = { $inject?: Array<string> } | any;
+
+function wrapRouterConfig(routerConfig: any) {
+    if (isClass(routerConfig)) {
+        const wrapperFunction = (...args: Array<any>) => {
+            // @ts-ignore
+            return new routerConfig(...args);
+        };
+        wrapperFunction.$inject = routerConfig.$inject;
+
+        return wrapperFunction;
+    }
+
+    return routerConfig;
+}
 
 export default function importHandler(imports: Array<ng1Module>) {
     let ng1ModuleIds: Array<string> = [];
@@ -29,6 +44,6 @@ export default function importHandler(imports: Array<ng1Module>) {
 
     return {
         ng1ModuleIds,
-        ng1RouterConfig
+        ng1RouterConfig: wrapRouterConfig(ng1RouterConfig),
     };
 }

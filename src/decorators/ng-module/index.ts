@@ -1,5 +1,5 @@
 import importHandler from "./metadata-handlers/import";
-import daclarationHandler from "./metadata-handlers/declaration";
+import declarationHandler from "./metadata-handlers/declaration";
 import providerHandler from "./metadata-handlers/provider";
 import counter from "../../helpers/counter";
 
@@ -30,7 +30,7 @@ export function NgModule({id, imports, declarations, providers, directRegister}:
         }
 
         if (declarations && declarations.length) {
-            daclarationHandler(ng1Module, declarations);
+            declarationHandler(ng1Module, declarations);
         }
 
         if (providers && providers.length) {
