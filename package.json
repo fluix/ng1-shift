@@ -1,6 +1,6 @@
 {
   "name": "ng1-shift",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Angular 1.5+ decorators for writing Angular2 like.",
   "files": [
     "dist"
@@ -49,7 +49,7 @@
   "peerDependencies": {
     "angular": "^1.5.0",
     "typescript": "^4.0.5",
-    "tslib": "^1.14.0"
+    "tslib": "^2.4.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^6.1.0",
