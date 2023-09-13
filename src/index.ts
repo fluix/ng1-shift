@@ -78,7 +78,7 @@ interface Ng1ShiftInjectableObject {
 }
 
 export function Inject(dependencyName: string | Ng1ShiftInjectableObject): ParameterDecorator {
-    return function (target: any, property: string | symbol, parameterIndex: number) {
+    return function (target: any, property: string | symbol | undefined, parameterIndex: number) {
         if (!target.$inject) {
             target.$inject = [];
         }
