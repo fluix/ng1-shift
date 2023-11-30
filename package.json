@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "reflect-metadata": "^0.1.13",
-    "rimraf": "^3.0.2"
+    "rimraf": "^4.0.0"
   },
   "peerDependencies": {
     "angular": "^1.5.0",
