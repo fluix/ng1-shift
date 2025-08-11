@@ -1,9 +1,0 @@
-<div>
-    <h1>Component</h1>
-
-    <child-app (onAdd)="add($event)" (onRemove)="remove()"></child-app>
-
-    <ul [hidden]="list.length === 0">
-        <li *ngFor="let label of list">{{label}}</li>
-    </ul>
-</div>
